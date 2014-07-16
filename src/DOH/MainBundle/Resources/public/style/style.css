@@ -104,7 +104,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
  * Content
  */
 .doh-content {
-    padding-top: 10px;
+    padding-top: 15px;
     margin-left: 60px;
 }
 
@@ -124,4 +124,57 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 .sidebar-module-inset p:last-child, .sidebar-module-inset ul:last-child, .sidebar-module-inset ol:last-child {
     margin-bottom: 0;
+}
+
+
+/**
+ * block
+ */
+
+.doh-block {
+    background-color: #fff;
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    border-radius: 4px;
+    border-width: 1px;
+    box-shadow: none;
+    margin: 0;
+    padding: 45px 15px 15px;
+
+    position: relative;
+}
+.doh-block h2 {
+    color: #959595;
+    content: "Example";
+    font-size: 12px;
+    font-weight: 700;
+    left: 15px;
+    letter-spacing: 1px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 15px;
+}
+
+.doh-block .doh-action {
+    border-radius: 0 4px;
+    border: 0 solid #e1e1e8;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    top: 0;
+    right: 0;
+    color: #777;
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    position: absolute;
+}
+.doh-block .doh-action ul {
+    margin: 0;
+}
+.doh-block .doh-action li {
+    padding: 5px 8px;
+    border-right: 1px solid #e1e1e8;
+}
+.doh-block .doh-action li:last-child {
+    border: none;
 }
