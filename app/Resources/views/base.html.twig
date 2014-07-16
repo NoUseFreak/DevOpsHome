@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/bundles/dohmain/style/style.css"/>
+    </head>
+    <body>
+        {% block body %}
+            <header class="doh-masthead">
+                <div class="doh-header">
+                    doh
+                </div>
+                <nav class="doh-nav">
+                    {% block subnavigation %}{% endblock %}
+                </nav>
+            </header>
+            <aside class="doh-sidebar">
+                <nav class="doh-sidebar-nav">
+                    <ul>
+                        <li class="active"><a href="#"><i class="fa fa-dashboard"></i><span>test</span></a></li>
+                        <li><a href="#"><i class="fa fa-sitemap"></i><span>test</span></a></li>
+                        <li><a href="#"><i class="fa fa-file-o"></i><span>test</span></a></li>
+                        <li><a href="#"><i class="fa fa-list-alt"></i><span>test</span></a></li>
+                        <li><a href="#"><i class="fa fa-windows"></i><span>test</span></a></li>
+                        <li><a href="#"><i class="fa fa-linux"></i><span>test</span></a></li>
+                        <li><a href="#"><i class="fa fa-info"></i><span>test</span></a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="doh-content">
+                <div class="container-fluid">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+        {% block javascripts %}
+            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        {% endblock %}
+    </body>
+</html>
