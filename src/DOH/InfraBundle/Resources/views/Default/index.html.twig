@@ -3,6 +3,6 @@
 {% block title %}Infrastructure{% endblock %}
 
 {% block subnavigation %}
-    <a href="{{ path('doh_infra_new') }}" class="doh-nav-item active">New</a>
+    <a href="{{ path('doh_infra_list') }}" class="doh-nav-item {{ _menu.active('doh_infra_list') }}">List</a>
+    <a href="{{ path('doh_infra_new') }}" class="doh-nav-item {{ _menu.active('doh_infra_new') }}">New</a>
 {% endblock %}
-

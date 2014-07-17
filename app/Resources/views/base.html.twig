@@ -1,3 +1,4 @@
+{% import "menu_macro.twig" as _menu %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,8 +24,18 @@
             <aside class="doh-sidebar">
                 <nav class="doh-sidebar-nav">
                     <ul>
-                        <li class="active"><a href="#"><i class="fa fa-dashboard"></i><span>test</span></a></li>
-                        <li><a href="#"><i class="fa fa-sitemap"></i><span>test</span></a></li>
+                        <li class="{{ _menu.active('doh_main_dashboard') }}">
+                            <a href="{{ path('doh_main_dashboard') }}">
+                                <i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="{{ _menu.active('doh_infra_list') }}">
+                            <a href="{{ path('doh_infra_list') }}">
+                                <i class="fa fa-sitemap"></i>
+                                <span>Infra</span>
+                            </a>
+                        </li>
                         <li><a href="#"><i class="fa fa-file-o"></i><span>test</span></a></li>
                         <li><a href="#"><i class="fa fa-list-alt"></i><span>test</span></a></li>
                         <li><a href="#"><i class="fa fa-windows"></i><span>test</span></a></li>

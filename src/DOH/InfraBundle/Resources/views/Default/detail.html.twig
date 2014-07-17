@@ -1,0 +1,62 @@
+{% extends 'DOHInfraBundle:Default:index.html.twig' %}
+
+{% block title %}{{ parent() }} - New{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="doh-block">
+                <h2>{{ server.name }}</h2>
+                <div class="doh-action">
+                    <ul class="list-inline">
+                        <li><a href="{{ path('doh_infra_edit', {id: server.id}) }}">Edit</a></li>
+                    </ul>
+                </div>
+                <table class="doh-spec-sheet">
+                    <tbody>
+                        <tr>
+                            <th>Type:</th>
+                            <td>{{ server.specSheet.type }}</td>
+                            <th>OS:</th>
+                            <td>{{ server.specSheet.operatingSystem }} - version</td>
+                        </tr>
+                        <tr>
+                            <th>vCPU:</th>
+                            <td>{{ server.specSheet.vcpu }}</td>
+                            <th>RAM:</th>
+                            <td>{{ server.specSheet.ram }} MB</td>
+                        </tr>
+                        <tr>
+                            <th>Disk space:</th>
+                            <td colspan="3">{{ server.specSheet.diskSpace }} GB</td>
+                        </tr>
+                        <tr>
+                            <th colspan="4">Partition info:</th>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                info
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>Stats</h4>
+                <table class="table table-condensed table-hover">
+                    <tr><td>Servers</td><td><b>12</b></td></tr>
+                    <tr><td>Guides</td><td><b>12</b></td></tr>
+                </table>
+            </div>
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>
+                    DevOps Home is a place to store and document all infrastructure information.
+                    It keeps all your documentation in a structured order.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

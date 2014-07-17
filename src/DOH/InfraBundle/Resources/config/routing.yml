@@ -1,3 +1,15 @@
+doh_infra_list:
+    path:     /infra
+    defaults: { _controller: DOHInfraBundle:Default:list }
+
 doh_infra_new:
     path:     /infra/new
     defaults: { _controller: DOHInfraBundle:Default:new }
+
+doh_infra_detail:
+    path:     /infra/{id}
+    defaults: { _controller: DOHInfraBundle:Default:detail }
+
+doh_infra_edit:
+    path:     /infra/{id}/edit
+    defaults: { _controller: DOHInfraBundle:Default:edit }
