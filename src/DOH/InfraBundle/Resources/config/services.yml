@@ -1,0 +1,7 @@
+parameters:
+#    doh_infra.example.class: DOH\InfraBundle\Example
+
+services:
+#    doh_infra.example:
+#        class: %doh_infra.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
