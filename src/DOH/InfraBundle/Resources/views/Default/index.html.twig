@@ -1,1 +1,6 @@
-Hello {{ name }}!
+{% extends '::base.html.twig' %}
+
+{% block subnavigation %}
+    <a href="{{ path('doh_infra_new') }}" class="doh-nav-item active">New</a>
+{% endblock %}
+

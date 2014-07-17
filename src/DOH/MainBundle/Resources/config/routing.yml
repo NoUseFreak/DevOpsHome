@@ -1,3 +1,3 @@
-doh_main_homepage:
+doh_main_dashboard:
     path:     /
     defaults: { _controller: DOHMainBundle:Default:index }

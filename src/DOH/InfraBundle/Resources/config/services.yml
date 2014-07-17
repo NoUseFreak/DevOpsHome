@@ -1,7 +1,16 @@
 parameters:
-#    doh_infra.example.class: DOH\InfraBundle\Example
+
+  doh_infra.form.type.server.class:            DOH\InfraBundle\Form\Type\ServerType
+  doh_infra.form.type.server_spec_sheet.class: DOH\InfraBundle\Form\Type\ServerSpecSheetType
 
 services:
-#    doh_infra.example:
-#        class: %doh_infra.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+
+  doh_infra.form.type.server:
+    class: %doh_infra.form.type.server.class%
+    tags:
+      - { name: form.type, alias: doh_infra_server }
+
+  doh_infra.form.type.server_spec_sheet:
+    class: %doh_infra.form.type.server_spec_sheet.class%
+    tags:
+      - { name: form.type, alias: doh_infra_server_spec_sheet }

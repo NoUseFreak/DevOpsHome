@@ -1,3 +1,3 @@
-doh_infra_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: DOHInfraBundle:Default:index }
+doh_infra_new:
+    path:     /infra/new
+    defaults: { _controller: DOHInfraBundle:Default:new }

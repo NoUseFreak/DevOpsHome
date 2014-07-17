@@ -29,7 +29,10 @@ class Server
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="ServerSpecSheet", mappedBy="server")
+     * @var ServerSpecSheet
+     *
+     * @ORM\OneToOne(targetEntity="ServerSpecSheet", inversedBy="server", cascade={"persist"})
+     * @ORM\JoinColumn(name="spec_sheet_id", referencedColumnName="id")
      */
     private $specSheet;
 
@@ -64,5 +67,21 @@ class Server
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param ServerSpecSheet $specSheet
+     */
+    public function setSpecSheet($specSheet)
+    {
+        $this->specSheet = $specSheet;
+    }
+
+    /**
+     * @return ServerSpecSheet
+     */
+    public function getSpecSheet()
+    {
+        return $this->specSheet;
     }
 }

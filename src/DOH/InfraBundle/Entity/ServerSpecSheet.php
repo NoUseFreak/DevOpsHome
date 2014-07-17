@@ -22,8 +22,9 @@ class ServerSpecSheet
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Server", inversedBy="specSheet")
-     * @ORM\JoinColumn(name="server_id", referencedColumnName="id")
+     * @var Server
+     *
+     * @ORM\OneToOne(targetEntity="Server", mappedBy="specSheet")
      */
     private $server;
 
@@ -78,6 +79,22 @@ class ServerSpecSheet
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $server
+     */
+    public function setServer($server)
+    {
+        $this->server = $server;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getServer()
+    {
+        return $this->server;
     }
 
     /**
