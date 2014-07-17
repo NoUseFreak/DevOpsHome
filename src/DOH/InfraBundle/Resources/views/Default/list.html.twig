@@ -3,48 +3,28 @@
 {% block title %}{{ parent() }} - New{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-9">
-            <div class="doh-block">
-                <h2>Servers</h2>
-                <div class="doh-action">
-                    <ul class="list-inline">
-                        <li><a href="{{ path('doh_infra_new') }}">New</a></li>
-                    </ul>
-                </div>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for server in servers %}
-                            <tr>
-                                <td>{{ server.id }}</td>
-                                <td><a href="{{ path('doh_infra_detail', {id: server.id}) }}">{{ server.name }}</a></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+    <div class="doh-block">
+        <h2>Servers</h2>
+        <div class="doh-action">
+            <ul class="list-inline">
+                <li><a href="{{ path('doh_infra_new') }}">New</a></li>
+            </ul>
         </div>
-        <div class="col-md-3">
-            <div class="sidebar-module sidebar-module-inset">
-                <h4>Stats</h4>
-                <table class="table table-condensed table-hover">
-                    <tr><td>Servers</td><td><b>12</b></td></tr>
-                    <tr><td>Guides</td><td><b>12</b></td></tr>
-                </table>
-            </div>
-            <div class="sidebar-module sidebar-module-inset">
-                <h4>About</h4>
-                <p>
-                    DevOps Home is a place to store and document all infrastructure information.
-                    It keeps all your documentation in a structured order.
-                </p>
-            </div>
-        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for server in servers %}
+                    <tr>
+                        <td>{{ server.id }}</td>
+                        <td><a href="{{ path('doh_infra_detail', {id: server.id}) }}">{{ server.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

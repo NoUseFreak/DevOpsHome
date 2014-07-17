@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class ServerRepository extends EntityRepository
 {
+    public function getCount()
+    {
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select('count(server.id)');
+        $qb->from('DOHInfraBundle:Server', 'server');
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

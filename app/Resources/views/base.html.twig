@@ -46,7 +46,25 @@
             </aside>
             <div class="doh-content">
                 <div class="container-fluid">
-                    {% block content %}{% endblock %}
+                    {% block content_full %}
+                        <div class="row">
+                            <div class="col-md-9">
+                                {% block content %}{% endblock %}
+                            </div>
+                            <div class="col-md-3">
+                                {% block content_side %}
+                                    {{ render(controller('DOHInfraBundle:Default:stats')) }}
+                                    <div class="sidebar-module sidebar-module-inset">
+                                        <h4>About</h4>
+                                        <p>
+                                            DevOps Home is a place to store and document all infrastructure information.
+                                            It keeps all your documentation in a structured order.
+                                        </p>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
                 </div>
             </div>
         {% endblock %}

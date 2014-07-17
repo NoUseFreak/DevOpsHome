@@ -78,4 +78,11 @@ class DefaultController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    public function statsAction()
+    {
+        return $this->render('DOHInfraBundle:Default:stats.html.twig', array(
+            'serverCount' => $this->getServerRepo()->getCount(),
+        ));
+    }
 }
