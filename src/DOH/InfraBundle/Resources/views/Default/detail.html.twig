@@ -41,14 +41,16 @@
     </div>
     <div class="doh-block doh-tabbed">
         <ul class="doh-tabs">
-            <li class="active"><a href="#">Notes</a></li>
-            <li><a href="#">Changelog</a></li>
+            <li class="active"><a href="#doh-infra-server-notes" role="tab" data-toggle="tab">Notes</a></li>
+            <li><a href="#doh-infra-server-changelog" role="tab" data-toggle="tab">Changelog</a></li>
         </ul>
-        <div class="doh-tab active">
-            content1
-        </div>
-        <div class="doh-tab">
-            content2
+        <div class="tab-content">
+            <div class="tab-pane active" id="doh-infra-server-notes">
+                content1
+            </div>
+            <div class="tab-pane" id="doh-infra-server-changelog">
+                content2
+            </div>
         </div>
     </div>
 {% endblock %}
