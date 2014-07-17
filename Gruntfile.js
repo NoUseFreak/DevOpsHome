@@ -70,7 +70,8 @@ module.exports = function (grunt) {
                 files: {
                     'var/grunt/js/vendors.min.js': [
                         'web/vendor/jquery/dist/jquery.js',
-                        'web/vendor/bootstrap/dist/js/bootstrap.min.js'
+                        'web/vendor/bootstrap/dist/js/bootstrap.min.js',
+                        'web/vendor/mousetrap/mousetrap.js'
                     ]
                 }
             },

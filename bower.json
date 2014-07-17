@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "bootstrap": "latest",
-    "components-font-awesome": "~4.1.0"
+    "components-font-awesome": "~4.1.0",
+    "mousetrap": "~1.4.6"
   }
 }
