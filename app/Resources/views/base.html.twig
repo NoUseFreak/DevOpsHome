@@ -24,13 +24,13 @@
             <aside class="doh-sidebar">
                 <nav class="doh-sidebar-nav">
                     <ul>
-                        <li class="{{ _menu.active('doh_main_dashboard') }}">
+                        <li class="{{ _menu.active('doh_main_dashboard') }}" data-toggle="tooltip" data-placement="right" title="Dashboard">
                             <a href="{{ path('doh_main_dashboard') }}">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="{{ _menu.active('doh_infra_list') }}">
+                        <li class="{{ _menu.active('doh_infra_list') }}" data-toggle="tooltip" data-placement="right" title="Infrastructure">
                             <a href="{{ path('doh_infra_list') }}">
                                 <i class="fa fa-sitemap"></i>
                                 <span>Infra</span>
