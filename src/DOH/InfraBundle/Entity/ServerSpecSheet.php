@@ -2,6 +2,7 @@
 
 namespace DOH\InfraBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -82,7 +83,7 @@ class ServerSpecSheet
     }
 
     /**
-     * @param mixed $server
+     * @param Server $server
      */
     public function setServer($server)
     {
@@ -90,7 +91,7 @@ class ServerSpecSheet
     }
 
     /**
-     * @return mixed
+     * @return Server
      */
     public function getServer()
     {

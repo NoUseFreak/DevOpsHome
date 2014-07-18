@@ -2,6 +2,7 @@
 
 namespace DOH\InfraBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +38,18 @@ class Server
     private $specSheet;
 
     /**
+     * @var ServerNic
+     *
+     * @ORM\OneToMany(targetEntity="ServerNic", mappedBy="server", cascade={"persist"})
+     */
+    private $nics;
+
+    public function __construct()
+    {
+        $this->nics= new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -44,6 +57,22 @@ class Server
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param ArrayCollection $nics
+     */
+    public function setNics(ArrayCollection $nics)
+    {
+        $this->nics = $nics;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getNics()
+    {
+        return $this->nics;
     }
 
     /**
