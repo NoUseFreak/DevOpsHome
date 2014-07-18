@@ -1,0 +1,72 @@
+{% extends 'form_div_layout.html.twig' %}
+
+
+{# Row #}
+{% block form_row %}
+    {% if 'fieldset' in form.vars.block_prefixes %}
+        {{ block('_form_row_fieldset') }}
+    {% elseif 'checkbox' in form.vars.block_prefixes %}
+        {{ block('_form_row_checkbox') }}
+    {% else %}
+        {{ block('_form_row') }}
+    {% endif %}
+{% endblock form_row %}
+
+{% block _form_row %}
+    <div class="form-group{% if form.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
+
+{% block _form_row_fieldset %}
+    <fieldset>
+        <legend>{{ form_label(form) }}</legend>
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </fieldset>
+{% endblock %}
+
+{% block _form_row_checkbox %}
+    <div class="checkbox">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
+
+
+{##
+ # errors
+ #}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <ul class="list-unstyled">
+                {% for error in errors %}
+                    <li><span class="help-block">{{ error.message }}</span></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+
+
+{% block collection_widget %}
+    {% set label = false %}
+    {{ block('form_label') }}
+    <ul class="collection doh-form-collection list-group " data-prototype="{{ form_widget(prototype)|e }}">
+        {% for item in form.children %}
+            <li class="list-group-item">
+                {{ form_widget(item) }}
+                {{ form_errors(item) }}
+            </li>
+        {% endfor %}
+    </ul>
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}
