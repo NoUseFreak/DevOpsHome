@@ -33,7 +33,24 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        info
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Filesystem</th>
+                                    <th>Disk size</th>
+                                    <th>Mount point</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for partition in server.specSheet.partitionInfo %}
+                                    <tr>
+                                        <td>{{ partition.filesystem }}</td>
+                                        <td>{{ partition.size }} GB</td>
+                                        <td>{{ partition.mount_point }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
             </tbody>
