@@ -27,7 +27,7 @@ class ServerSpecSheetType extends AbstractType
             ->add('diskSpace')
             ->add('type')
             ->add('partitionInfo', 'collection', array(
-                'type' => 'text',
+                'type' => 'doh_infra_server_disk_partition',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
