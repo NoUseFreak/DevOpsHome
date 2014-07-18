@@ -3,5 +3,10 @@
 {% block title %}{{ parent() }} - New{% endblock %}
 
 {% block content %}
-    {{ form(form) }}
+
+    <div class="doh-block">
+        <h2>New server</h2>
+        {{ form(form) }}
+    </div>
+
 {% endblock %}
