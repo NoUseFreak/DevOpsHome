@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    Mousetrap.bind('g d', function() { window.location = '{{ path('doh_main_dashboard') }}'; });
+</script>
+
+<div class="modal fade" id="doh-keyboard-help" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Keyboard shortcuts</h4>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Site wide shortcuts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span>g</span><span>d</span></td>
+                            <td>Go to dashboard</td>
+                        </tr>
+                        <tr>
+                            <td><span>?</span></td>
+                            <td>Bring up this help dialog</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
