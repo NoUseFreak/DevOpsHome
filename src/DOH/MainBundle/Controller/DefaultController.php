@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('DOHMainBundle:Default:index.html.twig');
     }
+
+    public function aboutAction()
+    {
+        return $this->render('DOHMainBundle:Default:about.html.twig');
+    }
 }

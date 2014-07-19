@@ -1,3 +1,7 @@
 doh_main_dashboard:
     path:     /
     defaults: { _controller: DOHMainBundle:Default:index }
+
+doh_main_about:
+    path:     /about
+    defaults: { _controller: DOHMainBundle:Default:about }
