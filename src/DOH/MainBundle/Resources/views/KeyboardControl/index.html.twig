@@ -1,5 +1,7 @@
 <script type="text/javascript">
-    Mousetrap.bind('g d', function() { window.location = '{{ path('doh_main_dashboard') }}'; });
+    {% for shortcut in list %}
+    {{ shortcut.render()|raw }}
+    {% endfor %}
 </script>
 
 <div class="modal fade" id="doh-keyboard-help" role="dialog" >
@@ -20,14 +22,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><span>g</span><span>d</span></td>
-                            <td>Go to dashboard</td>
-                        </tr>
-                        <tr>
-                            <td><span>?</span></td>
-                            <td>Bring up this help dialog</td>
-                        </tr>
+                        {% for shortcut in list if shortcut.description %}
+                            <tr>
+                                <td>
+                                    {% for keystroke in shortcut.shortcut %}
+                                        <span>{{ keystroke }}</span>
+                                    {% endfor %}
+                                </td>
+                                <td>{{ shortcut.description }}</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

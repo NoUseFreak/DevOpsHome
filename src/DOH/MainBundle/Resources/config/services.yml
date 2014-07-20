@@ -1,7 +1,12 @@
 parameters:
-#    doh_main.example.class: DOH\MainBundle\Example
+  doh_main.keyboard_control.handler.class:   DOH\MainBundle\KeyboardControl\KeyboardControlHandler
+  doh_main.keyboard_control_extension.class: DOH\MainBundle\DependencyInjection\KeyboardControlExtension
 
 services:
-#    doh_main.example:
-#        class: %doh_main.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+  doh_main.keyboard_control.handler:
+    class: %doh_main.keyboard_control.handler.class%
+
+  doh_main.keyboard_control_extension:
+    class: %doh_main.keyboard_control_extension.class%
+    tags:
+      - { name: doh_main.keyboard_control.extension }
