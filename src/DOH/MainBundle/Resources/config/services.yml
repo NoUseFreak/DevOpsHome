@@ -8,5 +8,6 @@ services:
 
   doh_main.keyboard_control_extension:
     class: %doh_main.keyboard_control_extension.class%
+    arguments: [@router]
     tags:
       - { name: doh_main.keyboard_control.extension }
