@@ -1,0 +1,57 @@
+{% extends 'DOHMainBundle:Default:index.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('vendor/devicons/css/devicons.css') }}" />
+    <style type="text/css">
+        .doh-about-tech-list span {
+            font-size: 40px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="doh-block">
+    <h2>About</h2>
+    <p>
+        DevOps Home is a place to store and document all infrastructure information.
+        It keeps all your documentation in a structured order.
+    </p>
+
+</div>
+<div class="doh-block">
+    <h2>Technology</h2>
+    <p>This site is build using open-source technologies.</p>
+
+    <div class="doh-about-tech-list">
+        <h3>Global</h3>
+        <ul class="list-inline">
+            <li><span class="devicons devicons-html5"></span></li>
+            <li><span class="devicons devicons-css3"></span></li>
+        </ul>
+        <h3>Front-end</h3>
+        <ul class="list-inline">
+            <li><span class="devicons devicons-javascript"></span></li>
+            <li><span class="devicons devicons-jquery"></span></li>
+            <li><span class="devicons devicons-nodejs"></span></li>
+            <li><span class="devicons devicons-npm"></span></li>
+            <li><span class="devicons devicons-grunt"></span></li>
+            <li><span class="devicons devicons-bower"></span></li>
+            <li><span class="devicons devicons-bootstrap"></span></li>
+            <li><span class="devicons devicons-less"></span></li>
+        </ul>
+        <h3>Back-end</h3>
+        <ul class="list-inline">
+            <li><span class="devicons devicons-php"></span></li>
+            <li><span class="devicons devicons-symfony"></span></li>
+            <li><span class="devicons devicons-mysql"></span></li>
+        </ul>
+        <h3>Development</h3>
+        <ul class="list-inline">
+            <li><span class="devicons devicons-git"></span></li>
+            <li><span class="devicons devicons-github_badge"></span></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

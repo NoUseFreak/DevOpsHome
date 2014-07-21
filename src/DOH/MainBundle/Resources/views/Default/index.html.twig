@@ -1,7 +1,8 @@
 {% extends '::base.html.twig' %}
 
 {% block subnavigation %}
-    <a href="#" class="doh-nav-item active">Dashboard</a>
+    <a href="{{ path('doh_main_dashboard') }}" class="doh-nav-item {{ _menu.active('doh_main_dashboard') }}">Dashboard</a>
+    <a href="{{ path('doh_main_about') }}" class="doh-nav-item {{ _menu.active('doh_main_about') }}">About</a>
 {% endblock %}
 
 {% block content %}
