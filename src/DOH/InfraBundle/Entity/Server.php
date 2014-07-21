@@ -44,9 +44,17 @@ class Server
      */
     private $nics;
 
+    /**
+     * @var ServerChangelog[]
+     *
+     * @ORM\OneToMany(targetEntity="ServerChangelog", mappedBy="server", cascade={"persist"})
+     */
+    private $changelogs;
+
     public function __construct()
     {
-        $this->nics= new ArrayCollection();
+        $this->nics       = new ArrayCollection();
+        $this->changelogs = new ArrayCollection();
     }
 
     /**
@@ -73,6 +81,22 @@ class Server
     public function getNics()
     {
         return $this->nics;
+    }
+
+    /**
+     * @param ServerChangelog[] $changelogs
+     */
+    public function setChangelogs($changelogs)
+    {
+        $this->changelogs = $changelogs;
+    }
+
+    /**
+     * @return ServerChangelog[]
+     */
+    public function getChangelogs()
+    {
+        return $this->changelogs;
     }
 
     /**

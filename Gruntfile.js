@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         'build': 'var/grunt',
         'dest': 'web/assets/',
         'js': [resourcesPath + 'public/**/*.js', '!' + resourcesPath + 'public/vendor/**/*.js', 'Gruntfile.js'],
-        'less': [resourcesPath + 'public/**/*.less']
+        'less': [resourcesPath + 'public/**/*.less', 'Gruntfile.js']
     };
 
     grunt.initConfig({
@@ -51,6 +51,7 @@ module.exports = function (grunt) {
             project: {
                 files: {
                     'web/assets/css/app.min.css': [
+                        'web/vendor/highlightjs/styles/github.css',
                         'var/grunt/css/app.css'
                     ]
                 }
@@ -73,7 +74,8 @@ module.exports = function (grunt) {
                         'web/vendor/bootstrap/js/tab.js',
                         'web/vendor/bootstrap/js/modal.js',
                         'web/vendor/bootstrap/js/tooltip.js',
-                        'web/vendor/mousetrap/mousetrap.js'
+                        'web/vendor/mousetrap/mousetrap.js',
+                        'web/vendor/highlightjs/highlight.pack.js'
                     ]
                 }
             },

@@ -95,8 +95,25 @@
                 content1
             </div>
             <div class="tab-pane" id="doh-infra-server-changelog">
-                content2
+                <ul class="list-unstyled">
+                {% for changelog in server.changelogs %}
+                    <li>
+                        <h4>{{ changelog.title }}</h4>
+                        <h5>User - {{ changelog.timestamp|date }}</h5>
+                        {{ changelog.description|markdown }}
+                    </li>
+                {% else %}
+                    <li>No changes logged.</li>
+                {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block content_side %}
+    <p>
+        <a href="{{ path('doh_infra_changelog_new', {id: server.id}) }}" class="btn btn-success btn-block">Log change</a>
+    </p>
+    {{ parent() }}
 {% endblock %}
