@@ -2,6 +2,7 @@
 
 namespace DOH\InfraBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use DOH\InfraBundle\Entity\Server;
 use DOH\InfraBundle\Entity\ServerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -62,10 +63,28 @@ class DefaultController extends Controller
     protected function renderForm(Request $request, Server $server)
     {
         $form = $this->createForm('doh_infra_server', $server);
+
+        $originalNics = new ArrayCollection();
+
+        foreach ($server->getNics() as $nic) {
+            $originalNics->add($nic);
+        }
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            foreach ($server->getNics() as $nic) {
+                $nic->setServer($server);
+                $em->persist($nic);
+            }
+            foreach ($originalNics as $nic) {
+                if (false === $server->getNics()->contains($nic)) {
+                    $em->remove($nic);
+                }
+            }
+
             $em->persist($server);
             $em->flush();
 

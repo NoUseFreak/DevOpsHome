@@ -16,34 +16,28 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class ServerType extends AbstractType
+class NicType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name')
-            ->add('specSheet', 'doh_infra_server_spec_sheet')
-            ->add('nics', 'collection', array(
-                'type' => 'doh_infra_server_nic',
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'options'  => array(
-                    'required'  => false,
-                ),
-            ))
-            ->add('save', 'submit');
+            ->add('ip')
+            ->add('netmask')
+            ->add('gateway')
+            ->add('dns')
+        ;
     }
 
     public function getName()
     {
-        return 'doh_infra_server';
+        return 'doh_infra_server_nic';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'DOH\InfraBundle\Entity\Server',
+            'data_class' => 'DOH\InfraBundle\Entity\ServerNic',
             'cascade_validation' => true,
         ));
     }

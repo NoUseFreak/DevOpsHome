@@ -53,6 +53,35 @@
                         </table>
                     </td>
                 </tr>
+                <tr>
+                    <th colspan="4">Nics:</th>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Ip</th>
+                                <th>Netmask</th>
+                                <th>Gateway</th>
+                                <th>DNS server</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for nic in server.nics %}
+                                <tr>
+                                    <td>{{ nic.name}}</td>
+                                    <td>{{ nic.ip}}</td>
+                                    <td>{{ nic.netmask}}</td>
+                                    <td>{{ nic.gateway}}</td>
+                                    <td>{{ nic.dns}}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
