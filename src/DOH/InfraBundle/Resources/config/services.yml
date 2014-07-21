@@ -4,6 +4,7 @@ parameters:
   doh_infra.form.type.server_spec_sheet.class:     DOH\InfraBundle\Form\Type\ServerSpecSheetType
   doh_infra.form.type.server_disk_partition.class: DOH\InfraBundle\Form\Type\DiskPartitionType
   doh_infra.form.type.server_nic.class:            DOH\InfraBundle\Form\Type\NicType
+  doh_infra.keyboard_control_extension.class:      DOH\InfraBundle\DependencyInjection\KeyboardControlExtension
 
 services:
 
@@ -26,3 +27,9 @@ services:
     class: %doh_infra.form.type.server_nic.class%
     tags:
       - { name: form.type, alias: doh_infra_server_nic }
+
+  doh_infra.keyboard_control_extension:
+    class: %doh_infra.keyboard_control_extension.class%
+    arguments: [@router]
+    tags:
+      - { name: doh_main.keyboard_control.extension }
