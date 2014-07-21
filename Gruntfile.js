@@ -75,7 +75,8 @@ module.exports = function (grunt) {
                         'web/vendor/bootstrap/js/modal.js',
                         'web/vendor/bootstrap/js/tooltip.js',
                         'web/vendor/mousetrap/mousetrap.js',
-                        'web/vendor/highlightjs/highlight.pack.js'
+                        'web/vendor/highlightjs/highlight.pack.js',
+                        'web/vendor/moment/moment.js'
                     ]
                 }
             },

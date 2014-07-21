@@ -21,7 +21,7 @@ class ChangelogController extends Controller
      */
     public function newAction(Request $request, $id)
     {
-        $server = $this->getDoctrine()->getRepository('DOHInfraBundle:Server')->find($id);
+        $server = $this->findServer($id);
 
         $changelog = new ServerChangelog();
         $changelog->setServer($server);
@@ -47,4 +47,21 @@ class ChangelogController extends Controller
         ));
     }
 
+    public function listAction($id)
+    {
+        $server = $this->findServer($id);
+
+        return $this->render('DOHInfraBundle:Changelog:list.html.twig', array(
+            'changelogs' => $server->getChangelogs(),
+        ));
+    }
+
+    /**
+     * @param $id
+     * @return Server
+     */
+    private function findServer($id)
+    {
+        return $this->getDoctrine()->getRepository('DOHInfraBundle:Server')->find($id);
+    }
 }

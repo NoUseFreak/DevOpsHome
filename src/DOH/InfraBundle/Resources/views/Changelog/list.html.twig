@@ -1,0 +1,11 @@
+<ul class="list-unstyled">
+    {% for changelog in changelogs %}
+        <li>
+            <h4>{{ changelog.title }}</h4>
+            <h5>User - <time class="moment since" datetime="{{ changelog.timestamp|date('Y-m-d H:i:s') }}">{{ changelog.timestamp|date }}</time></h5>
+            {{ changelog.description|markdown }}
+        </li>
+    {% else %}
+        <li>No changes logged.</li>
+    {% endfor %}
+</ul>
