@@ -4,6 +4,7 @@
 {##
  # Row
  #}
+
 {% block form_row %}
     {% if 'fieldset' in form.vars.block_prefixes %}
         {{ block('_form_row_fieldset') }}
@@ -54,6 +55,7 @@
         {% endif %}
     {% endspaceless %}
 {% endblock form_errors %}
+
 
 {##
  # Elements
@@ -137,7 +139,4 @@
             </li>
         {% endfor %}
     </ul>
-    <script type="text/javascript">
-
-    </script>
 {% endblock %}
