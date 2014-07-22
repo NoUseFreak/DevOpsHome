@@ -95,8 +95,15 @@
                 content1
             </div>
             <div class="tab-pane" id="doh-infra-server-changelog">
-                content2
+                {{ render(controller('DOHInfraBundle:Changelog:list', {id: server.id})) }}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block content_side %}
+    <p>
+        <a href="{{ path('doh_infra_changelog_new', {id: server.id}) }}" class="btn btn-success btn-block">Log change</a>
+    </p>
+    {{ parent() }}
 {% endblock %}

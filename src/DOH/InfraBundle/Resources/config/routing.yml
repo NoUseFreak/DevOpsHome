@@ -13,3 +13,7 @@ doh_infra_detail:
 doh_infra_edit:
     path:     /infra/{id}/edit
     defaults: { _controller: DOHInfraBundle:Default:edit }
+
+doh_infra_changelog_new:
+    path:     /infra/{id}/changelog/new
+    defaults: { _controller: DOHInfraBundle:Changelog:new }
