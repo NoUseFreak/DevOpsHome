@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="doh-block">
-        <h2>{{ server.name }}</h2>
+        <h2 class="doh-block-title">{{ server.name }}</h2>
         <div class="doh-action">
             <ul class="list-inline">
                 <li><a href="{{ path('doh_infra_edit', {id: server.id}) }}">Edit</a></li>
