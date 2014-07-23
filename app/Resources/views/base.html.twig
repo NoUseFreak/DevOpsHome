@@ -20,7 +20,10 @@
                 <nav class="doh-nav">
                     {% block subnavigation %}{% endblock %}
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <a href="{{ path('fos_user_security_logout') }}" class="doh-nav-item pull-right">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                        <div class="pull-right">
+                            <img src="{{ gravatar(app.user.email, 80) }}" class="avatar img-circle" data-toggle="tooltip" data-placement="left" title="Logged in as {{ app.user.username }}" />
+                            <a href="{{ path('fos_user_security_logout') }}" class="doh-nav-item pull-right">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                        </div>
                     {% endif %}
                 </nav>
             </header>
