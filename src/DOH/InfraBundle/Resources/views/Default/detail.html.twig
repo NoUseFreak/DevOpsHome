@@ -65,49 +65,57 @@
             </div>
 
             <div class="tab-pane" id="doh-infra-server-partition">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Filesystem</th>
-                        <th>Disk size</th>
-                        <th>Mount point</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for partition in server.specSheet.partitionInfo %}
+                {% if server.specSheet.partitionInfo|length %}
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td>{{ partition.filesystem }}</td>
-                            <td>{{ partition.size }} GB</td>
-                            <td>{{ partition.mount_point }}</td>
+                            <th>Filesystem</th>
+                            <th>Disk size</th>
+                            <th>Mount point</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for partition in server.specSheet.partitionInfo %}
+                            <tr>
+                                <td>{{ partition.filesystem }}</td>
+                                <td>{{ partition.size }} GB</td>
+                                <td>{{ partition.mount_point }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    No partition info available.
+                {% endif %}
             </div>
 
             <div class="tab-pane" id="doh-infra-server-nics">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Ip</th>
-                        <th>Netmask</th>
-                        <th>Gateway</th>
-                        <th>DNS server</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for nic in server.nics %}
+                {% if server.nics|length %}
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td>{{ nic.name}}</td>
-                            <td>{{ nic.ip}}</td>
-                            <td>{{ nic.netmask}}</td>
-                            <td>{{ nic.gateway}}</td>
-                            <td>{{ nic.dns}}</td>
+                            <th>Name</th>
+                            <th>Ip</th>
+                            <th>Netmask</th>
+                            <th>Gateway</th>
+                            <th>DNS server</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for nic in server.nics %}
+                            <tr>
+                                <td>{{ nic.name}}</td>
+                                <td>{{ nic.ip}}</td>
+                                <td>{{ nic.netmask}}</td>
+                                <td>{{ nic.gateway}}</td>
+                                <td>{{ nic.dns}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    No NIC info available.
+                {% endif %}
             </div>
 
         </div>
