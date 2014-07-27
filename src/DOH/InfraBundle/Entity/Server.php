@@ -59,6 +59,14 @@ class Server
      **/
     private $farms;
 
+    /**
+     * @var Role[]
+     *
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="servers")
+     * @ORM\JoinTable(name="Server_Role")
+     **/
+    private $roles;
+
     public function __construct()
     {
         $this->nics       = new ArrayCollection();
@@ -161,5 +169,21 @@ class Server
     public function getFarms()
     {
         return $this->farms;
+    }
+
+    /**
+     * @param Role[] $roles
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+    }
+
+    /**
+     * @return Role[]
+     */
+    public function getRoles()
+    {
+        return $this->roles;
     }
 }

@@ -6,12 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Farm
+ * Role
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="DOH\InfraBundle\Entity\FarmRepository")
+ * @ORM\Entity(repositoryClass="DOH\InfraBundle\Entity\RoleRepository")
  */
-class Farm
+class Role
 {
     /**
      * @var integer
@@ -23,18 +23,25 @@ class Farm
     private $id;
 
     /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Server", mappedBy="farms")
-     */
-    private $servers;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Server", mappedBy="roles")
+     */
+    private $servers;
 
 
     public function __construct()
@@ -61,7 +68,7 @@ class Farm
      * Set name
      *
      * @param string $name
-     * @return Farm
+     * @return Role
      */
     public function setName($name)
     {
@@ -78,6 +85,29 @@ class Farm
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Role
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

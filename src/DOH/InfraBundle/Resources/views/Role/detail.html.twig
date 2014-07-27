@@ -1,0 +1,21 @@
+{% extends 'DOHInfraBundle:Default:index.html.twig' %}
+
+{% block title %}{{ parent() }} - Role - {{ role.name }}{% endblock %}
+
+{% block content %}
+    <div class="doh-block">
+        <h2 class="doh-block-title">{{ role.name }}</h2>
+        <div class="doh-action">
+            <ul class="list-inline">
+                <li><a href="{{ path('doh_infra_role_edit', {id: role.id}) }}">Edit</a></li>
+            </ul>
+        </div>
+
+        <h3>Servers</h3>
+        <ul>
+            {% for server in role.servers %}
+                <li><a href="{{ path('doh_infra_server_detail', {id: server.id}) }}">{{ server.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

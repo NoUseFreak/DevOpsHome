@@ -56,3 +56,27 @@ doh_infra_farm_edit:
     defaults: { _controller: DOHInfraBundle:Farm:edit }
     requirements:
         id:  \d+
+
+##
+# Roles
+##
+
+doh_infra_role_list:
+    path:     /infra/role
+    defaults: { _controller: DOHInfraBundle:Role:list }
+
+doh_infra_role_new:
+    path:     /infra/role/new
+    defaults: { _controller: DOHInfraBundle:Role:new }
+
+doh_infra_role_detail:
+    path:     /infra/role/{id}
+    defaults: { _controller: DOHInfraBundle:Role:detail }
+    requirements:
+        id:  \d+
+
+doh_infra_role_edit:
+    path:     /infra/role/{id}/edit
+    defaults: { _controller: DOHInfraBundle:Role:edit }
+    requirements:
+        id:  \d+
