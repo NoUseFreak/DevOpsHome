@@ -1,19 +1,58 @@
-doh_infra_list:
+
+##
+# Server
+##
+
+doh_infra_server_list:
     path:     /infra
     defaults: { _controller: DOHInfraBundle:Default:list }
 
-doh_infra_new:
+doh_infra_server_new:
     path:     /infra/new
     defaults: { _controller: DOHInfraBundle:Default:new }
 
-doh_infra_detail:
+doh_infra_server_detail:
     path:     /infra/{id}
     defaults: { _controller: DOHInfraBundle:Default:detail }
+    requirements:
+        id:  \d+
 
-doh_infra_edit:
+doh_infra_server_edit:
     path:     /infra/{id}/edit
     defaults: { _controller: DOHInfraBundle:Default:edit }
+    requirements:
+        id:  \d+
+
+##
+# Changelog
+##
 
 doh_infra_changelog_new:
     path:     /infra/{id}/changelog/new
     defaults: { _controller: DOHInfraBundle:Changelog:new }
+    requirements:
+        id:  \d+
+
+##
+# Farms
+##
+
+doh_infra_farm_list:
+    path:     /infra/farm
+    defaults: { _controller: DOHInfraBundle:Farm:list }
+
+doh_infra_farm_new:
+    path:     /infra/farm/new
+    defaults: { _controller: DOHInfraBundle:Farm:new }
+
+doh_infra_farm_detail:
+    path:     /infra/farm/{id}
+    defaults: { _controller: DOHInfraBundle:Farm:detail }
+    requirements:
+        id:  \d+
+
+doh_infra_farm_edit:
+    path:     /infra/farm/{id}/edit
+    defaults: { _controller: DOHInfraBundle:Farm:edit }
+    requirements:
+        id:  \d+

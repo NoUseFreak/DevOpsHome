@@ -52,6 +52,8 @@ module.exports = function (grunt) {
                 files: {
                     'web/assets/css/app.min.css': [
                         'web/vendor/highlightjs/styles/github.css',
+                        'web/vendor/select2/select2.css',
+                        'web/vendor/select2-bootstrap-css/select2-bootstrap.css',
                         'var/grunt/css/app.css'
                     ]
                 }
@@ -76,7 +78,8 @@ module.exports = function (grunt) {
                         'web/vendor/bootstrap/js/tooltip.js',
                         'web/vendor/mousetrap/mousetrap.js',
                         'web/vendor/highlightjs/highlight.pack.js',
-                        'web/vendor/moment/moment.js'
+                        'web/vendor/moment/moment.js',
+                        'web/vendor/select2/select2.min.js'
                     ]
                 }
             },

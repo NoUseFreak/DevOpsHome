@@ -33,7 +33,7 @@ class KeyboardControlExtension implements KeyboardControlExtensionInterface
     {
         $list[] = new LocationControl(
             array('i'),
-            $this->router->generate('doh_infra_list'),
+            $this->router->generate('doh_infra_server_list'),
             'Go to Infrastructure'
         );
     }

@@ -16,35 +16,24 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class ServerType extends AbstractType
+class FarmType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name')
-            ->add('specSheet', 'doh_infra_server_spec_sheet')
-            ->add('nics', 'collection', array(
-                'type' => 'doh_infra_server_nic',
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'options'  => array(
-                    'required'  => false,
-                ),
-            ))
-            ->add('farms')
             ->add('save', 'submit');
     }
 
     public function getName()
     {
-        return 'doh_infra_server';
+        return 'doh_infra_farm';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'DOH\InfraBundle\Entity\Server',
+            'data_class' => 'DOH\InfraBundle\Entity\Farm',
             'cascade_validation' => true,
         ));
     }

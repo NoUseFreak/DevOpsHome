@@ -51,10 +51,19 @@ class Server
      */
     private $changelogs;
 
+    /**
+     * @var Farm[]
+     *
+     * @ORM\ManyToMany(targetEntity="Farm", inversedBy="servers")
+     * @ORM\JoinTable(name="Server_Farm")
+     **/
+    private $farms;
+
     public function __construct()
     {
         $this->nics       = new ArrayCollection();
         $this->changelogs = new ArrayCollection();
+        $this->farms      = new ArrayCollection();
     }
 
     /**
@@ -136,5 +145,21 @@ class Server
     public function getSpecSheet()
     {
         return $this->specSheet;
+    }
+
+    /**
+     * @param array $farms
+     */
+    public function setFarms($farms)
+    {
+        $this->farms = $farms;
+    }
+
+    /**
+     * @return Farm[]
+     */
+    public function getFarms()
+    {
+        return $this->farms;
     }
 }

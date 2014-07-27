@@ -6,6 +6,7 @@ parameters:
   doh_infra.form.type.server_nic.class:            DOH\InfraBundle\Form\Type\NicType
   doh_infra.form.type.server_changelog.class:      DOH\InfraBundle\Form\Type\ChangelogType
   doh_infra.keyboard_control_extension.class:      DOH\InfraBundle\DependencyInjection\KeyboardControlExtension
+  doh_infra.form.type.farm.class:                  DOH\InfraBundle\Form\Type\FarmType
 
 services:
 
@@ -39,3 +40,8 @@ services:
     arguments: [@router]
     tags:
       - { name: doh_main.keyboard_control.extension }
+
+  doh_infra.form.type.farm:
+    class: %doh_infra.form.type.farm.class%
+    tags:
+      - { name: form.type, alias: doh_infra_farm }
