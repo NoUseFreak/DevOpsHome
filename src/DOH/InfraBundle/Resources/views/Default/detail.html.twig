@@ -15,6 +15,8 @@
         <ul>
             {% for farm in server.farms %}
                 <li><a href="{{ path('doh_infra_farm_detail', {id: farm.id}) }}">{{ farm.name }}</a></li>
+            {% else %}
+                <li>Not in any farms.</li>
             {% endfor %}
         </ul>
 
@@ -22,6 +24,8 @@
         <ul>
             {% for role in server.roles %}
                 <li><a href="{{ path('doh_infra_role_detail', {id: role.id}) }}">{{ role.name }}</a></li>
+            {% else %}
+                <li>No roles defined.</li>
             {% endfor %}
         </ul>
 
