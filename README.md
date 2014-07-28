@@ -6,10 +6,10 @@ DevOps Home is a place to store and document all infrastructure information. It 
 Roadmap
 -------
 
-This project is and will be build small sprints. The exact lineout of the project is not defined.
+This project is and will be built in small sprints. The exact line-out of the project is not defined.
 All new features can be found in the issue queue labeled by [feature+request](https://github.com/NoUseFreak/DevOpsHome/issues?labels=feature+request&state=open).
 
-Before a new sprint start, accepted features will added to the milestone.
+Before starting a new sprint, accepted features will be added to the milestone.
 
 If you are missing a feature, please don't hesitate to create a new issue.
 
