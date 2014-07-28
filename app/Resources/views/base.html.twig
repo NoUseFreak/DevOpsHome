@@ -19,31 +19,41 @@
                 </div>
                 <nav class="doh-nav">
                     {% block subnavigation %}{% endblock %}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <div class="pull-right">
+                            <img src="{{ gravatar(app.user.email, 80) }}" class="avatar img-circle" data-toggle="tooltip" data-placement="left" title="Logged in as {{ app.user.username }}" />
+                            <a href="{{ path('fos_user_security_logout') }}" class="doh-nav-item pull-right">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                        </div>
+                    {% endif %}
                 </nav>
             </header>
-            <aside class="doh-sidebar">
-                <nav class="doh-sidebar-nav">
-                    <ul>
-                        <li class="{{ _menu.active('doh_main_dashboard') }}" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                            <a href="{{ path('doh_main_dashboard') }}">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="{{ _menu.active('doh_infra_list') }}" data-toggle="tooltip" data-placement="right" title="Infrastructure">
-                            <a href="{{ path('doh_infra_list') }}">
-                                <i class="fa fa-sitemap"></i>
-                                <span>Infrastructure</span>
-                            </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-file-o"></i><span>test</span></a></li>
-                        <li><a href="#"><i class="fa fa-list-alt"></i><span>test</span></a></li>
-                        <li><a href="#"><i class="fa fa-windows"></i><span>test</span></a></li>
-                        <li><a href="#"><i class="fa fa-linux"></i><span>test</span></a></li>
-                        <li><a href="#"><i class="fa fa-info"></i><span>test</span></a></li>
-                    </ul>
-                </nav>
-            </aside>
+
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <aside class="doh-sidebar">
+                    <nav class="doh-sidebar-nav">
+                        <ul>
+                            <li class="{{ _menu.active('doh_main_dashboard') }}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                                <a href="{{ path('doh_main_dashboard') }}">
+                                    <i class="fa fa-dashboard"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="{{ _menu.active('doh_infra_list') }}" data-toggle="tooltip" data-placement="right" title="Infrastructure">
+                                <a href="{{ path('doh_infra_list') }}">
+                                    <i class="fa fa-sitemap"></i>
+                                    <span>Infrastructure</span>
+                                </a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-file-o"></i><span>test</span></a></li>
+                            <li><a href="#"><i class="fa fa-list-alt"></i><span>test</span></a></li>
+                            <li><a href="#"><i class="fa fa-windows"></i><span>test</span></a></li>
+                            <li><a href="#"><i class="fa fa-linux"></i><span>test</span></a></li>
+                            <li><a href="#"><i class="fa fa-info"></i><span>test</span></a></li>
+                        </ul>
+                    </nav>
+                </aside>
+            {% endif %}
+
             <div class="doh-content">
                 <div class="container-fluid">
                     {% block content_full %}
