@@ -1,7 +1,8 @@
-/**
- * Collection
- */
 $(function() {
+
+    /**
+     * Collection
+     */
     $('ul.doh-form-collection').each(function() {
         var $collectionHolder = $(this);
         var $addTagLink = $('<a href="#" class="btn btn-primary add_link">Add</a>')
@@ -38,4 +39,9 @@ $(function() {
             $li.remove();
         });
     }
+
+    /**
+     * Select
+     */
+    $('select[multiple="multiple"]').select2();
 });

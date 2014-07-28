@@ -1,13 +1,13 @@
 {% extends 'DOHInfraBundle:Default:index.html.twig' %}
 
-{% block title %}{{ parent() }} - New{% endblock %}
+{% block title %}{{ parent() }} - Farm - List{% endblock %}
 
 {% block content %}
     <div class="doh-block">
-        <h2 class="doh-block-title">Servers</h2>
+        <h2 class="doh-block-title">Farms</h2>
         <div class="doh-action">
             <ul class="list-inline">
-                <li><a href="{{ path('doh_infra_server_new') }}">New</a></li>
+                <li><a href="{{ path('doh_infra_role_new') }}">New</a></li>
             </ul>
         </div>
         <table class="table table-hover">
@@ -18,10 +18,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for server in servers %}
+                {% for role in roles %}
                     <tr>
-                        <td>{{ server.id }}</td>
-                        <td><a href="{{ path('doh_infra_server_detail', {id: server.id}) }}">{{ server.name }}</a></td>
+                        <td>{{ role.id }}</td>
+                        <td><a href="{{ path('doh_infra_role_detail', {id: role.id}) }}">{{ role.name }}</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

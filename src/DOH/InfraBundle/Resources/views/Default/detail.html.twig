@@ -7,9 +7,29 @@
         <h2 class="doh-block-title">{{ server.name }}</h2>
         <div class="doh-action">
             <ul class="list-inline">
-                <li><a href="{{ path('doh_infra_edit', {id: server.id}) }}">Edit</a></li>
+                <li><a href="{{ path('doh_infra_server_edit', {id: server.id}) }}">Edit</a></li>
             </ul>
         </div>
+
+        <h3>Farms</h3>
+        <ul>
+            {% for farm in server.farms %}
+                <li><a href="{{ path('doh_infra_farm_detail', {id: farm.id}) }}">{{ farm.name }}</a></li>
+            {% else %}
+                <li>Not in any farms.</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Roles</h3>
+        <ul>
+            {% for role in server.roles %}
+                <li><a href="{{ path('doh_infra_role_detail', {id: role.id}) }}">{{ role.name }}</a></li>
+            {% else %}
+                <li>No roles defined.</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Specsheet</h3>
         <table class="doh-spec-sheet">
             <tbody>
                 <tr>
@@ -28,60 +48,6 @@
                     <th>Disk space:</th>
                     <td colspan="3">{{ server.specSheet.diskSpace }} GB</td>
                 </tr>
-                <tr>
-                    <th colspan="4">Partition info:</th>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Filesystem</th>
-                                    <th>Disk size</th>
-                                    <th>Mount point</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for partition in server.specSheet.partitionInfo %}
-                                    <tr>
-                                        <td>{{ partition.filesystem }}</td>
-                                        <td>{{ partition.size }} GB</td>
-                                        <td>{{ partition.mount_point }}</td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="4">Nics:</th>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Ip</th>
-                                <th>Netmask</th>
-                                <th>Gateway</th>
-                                <th>DNS server</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for nic in server.nics %}
-                                <tr>
-                                    <td>{{ nic.name}}</td>
-                                    <td>{{ nic.ip}}</td>
-                                    <td>{{ nic.netmask}}</td>
-                                    <td>{{ nic.gateway}}</td>
-                                    <td>{{ nic.dns}}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -89,14 +55,73 @@
         <ul class="doh-tabs">
             <li class="active"><a href="#doh-infra-server-notes" role="tab" data-toggle="tab">Notes</a></li>
             <li><a href="#doh-infra-server-changelog" role="tab" data-toggle="tab">Changelog</a></li>
+            <li><a href="#doh-infra-server-partition" role="tab" data-toggle="tab">Partition info</a></li>
+            <li><a href="#doh-infra-server-nics" role="tab" data-toggle="tab">Nics</a></li>
         </ul>
         <div class="tab-content">
+
             <div class="tab-pane active" id="doh-infra-server-notes">
                 content1
             </div>
+
             <div class="tab-pane" id="doh-infra-server-changelog">
                 {{ render(controller('DOHInfraBundle:Changelog:list', {id: server.id})) }}
             </div>
+
+            <div class="tab-pane" id="doh-infra-server-partition">
+                {% if server.specSheet.partitionInfo|length %}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Filesystem</th>
+                            <th>Disk size</th>
+                            <th>Mount point</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for partition in server.specSheet.partitionInfo %}
+                            <tr>
+                                <td>{{ partition.filesystem }}</td>
+                                <td>{{ partition.size }} GB</td>
+                                <td>{{ partition.mount_point }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    No partition info available.
+                {% endif %}
+            </div>
+
+            <div class="tab-pane" id="doh-infra-server-nics">
+                {% if server.nics|length %}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Ip</th>
+                            <th>Netmask</th>
+                            <th>Gateway</th>
+                            <th>DNS server</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for nic in server.nics %}
+                            <tr>
+                                <td>{{ nic.name}}</td>
+                                <td>{{ nic.ip}}</td>
+                                <td>{{ nic.netmask}}</td>
+                                <td>{{ nic.gateway}}</td>
+                                <td>{{ nic.dns}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    No NIC info available.
+                {% endif %}
+            </div>
+
         </div>
     </div>
 {% endblock %}

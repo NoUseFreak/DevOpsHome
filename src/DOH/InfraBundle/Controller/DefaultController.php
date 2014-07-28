@@ -88,7 +88,7 @@ class DefaultController extends Controller
             $em->persist($server);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('doh_infra_detail', array(
+            return $this->redirect($this->generateUrl('doh_infra_server_detail', array(
                 'id' => $server->getId(),
             )));
         }

@@ -3,6 +3,7 @@
 {% block title %}Infrastructure{% endblock %}
 
 {% block subnavigation %}
-    <a href="{{ path('doh_infra_list') }}" class="doh-nav-item {{ _menu.active('doh_infra_list') }}">List</a>
-    <a href="{{ path('doh_infra_new') }}" class="doh-nav-item {{ _menu.active('doh_infra_new') }}">New</a>
+    <a href="{{ path('doh_infra_server_list') }}" class="doh-nav-item {{ _menu.active('doh_infra_server_list') }}">Servers</a>
+    <a href="{{ path('doh_infra_farm_list') }}" class="doh-nav-item {{ _menu.active('doh_infra_farm_list') }}">Farms</a>
+    <a href="{{ path('doh_infra_role_list') }}" class="doh-nav-item {{ _menu.active('doh_infra_role_list') }}">Roles</a>
 {% endblock %}
