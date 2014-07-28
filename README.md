@@ -21,7 +21,8 @@ Installation
 3. Install front-end dependencies: `$ npm install`
 4. Build js and css: `$ grunt build`
 5. Run `$ bin/console doctrine:schema:create` to setup the database.
-6. Create a VirtualHost with DocumentRoot pointing to web/ or run `$ bin/console server:run` for development.
+6. Create the admin user: `$ bin/console fos:user:create admin --super-admin`
+7. Create a VirtualHost with DocumentRoot pointing to web/ or run `$ bin/console server:run` for development.
 
 You should now be able to access DoH.
 
