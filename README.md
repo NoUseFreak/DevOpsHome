@@ -3,10 +3,15 @@ DevOps Home
 
 DevOps Home is a place to store and document all infrastructure information. It keeps all your documentation in a structured order.
 
-Use case
---------
+Roadmap
+-------
 
-TODO
+This project is and will be built in small sprints. The exact line-out of the project is not defined.
+All new features can be found in the issue queue labeled by [feature+request](https://github.com/NoUseFreak/DevOpsHome/issues?labels=feature+request&state=open).
+
+Before starting a new sprint, accepted features will be added to the milestone.
+
+If you are missing a feature, please don't hesitate to create a new issue.
 
 Installation
 ------------
