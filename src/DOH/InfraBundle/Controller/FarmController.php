@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class FarmController extends Controller
 {
@@ -35,21 +36,35 @@ class FarmController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     * @throws NotFoundHttpException
      * @return RedirectResponse|Response
      */
     public function editAction(Request $request, $id)
     {
-        return $this->renderForm($request, $this->getFarmRepo()->find($id));
+        $farm = $this->getFarmRepo()->find($id);
+
+        if (!$farm) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->renderForm($request, $farm);
     }
 
     /**
      * @param int $id
+     * @throws NotFoundHttpException
      * @return Response
      */
     public function detailAction($id)
     {
+        $farm = $this->getFarmRepo()->find($id);
+
+        if (!$farm) {
+            throw new NotFoundHttpException();
+        }
+
         return $this->render('DOHInfraBundle:Farm:detail.html.twig', array(
-            'farm' => $this->getFarmRepo()->find($id),
+            'farm' => $farm,
         ));
     }
 

@@ -19,7 +19,7 @@
                 </div>
                 <nav class="doh-nav">
                     {% block subnavigation %}{% endblock %}
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <div class="pull-right">
                             <img src="{{ gravatar(app.user.email, 80) }}" class="avatar img-circle" data-toggle="tooltip" data-placement="left" title="Logged in as {{ app.user.username }}" />
                             <a href="{{ path('fos_user_security_logout') }}" class="doh-nav-item pull-right">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
@@ -28,7 +28,7 @@
                 </nav>
             </header>
 
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <aside class="doh-sidebar">
                     <nav class="doh-sidebar-nav">
                         <ul>
@@ -81,6 +81,8 @@
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('assets/js/footer.min.js') }}"></script>
         {% endblock %}
-        {{ render(controller('DOHMainBundle:KeyboardControl:index')) }}
+        {% block keyboard_control %}
+            {{ render(controller('DOHMainBundle:KeyboardControl:index')) }}
+        {% endblock %}
     </body>
 </html>

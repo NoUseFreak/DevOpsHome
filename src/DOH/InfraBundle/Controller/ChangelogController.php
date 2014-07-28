@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ChangelogController extends Controller
 {
@@ -58,10 +59,17 @@ class ChangelogController extends Controller
 
     /**
      * @param $id
+     * @throws NotFoundHttpException
      * @return Server
      */
     private function findServer($id)
     {
-        return $this->getDoctrine()->getRepository('DOHInfraBundle:Server')->find($id);
+        $server = $this->getDoctrine()->getRepository('DOHInfraBundle:Server')->find($id);
+
+        if (!$server) {
+            throw new NotFoundHttpException();
+        }
+
+        return $server;
     }
 }

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -34,21 +35,35 @@ class DefaultController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     * @throws NotFoundHttpException
      * @return RedirectResponse|Response
      */
     public function editAction(Request $request, $id)
     {
-        return $this->renderForm($request, $this->getServerRepo()->find($id));
+        $server = $this->getServerRepo()->find($id);
+
+        if (!$server) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->renderForm($request, $server);
     }
 
     /**
      * @param int $id
+     * @throws NotFoundHttpException
      * @return Response
      */
     public function detailAction($id)
     {
+        $server = $this->getServerRepo()->find($id);
+
+        if (!$server) {
+            throw new NotFoundHttpException();
+        }
+
         return $this->render('DOHInfraBundle:Default:detail.html.twig', array(
-            'server' => $this->getServerRepo()->find($id),
+            'server' => $server,
         ));
     }
 

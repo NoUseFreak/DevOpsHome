@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class RoleController extends Controller
 {
@@ -35,21 +36,35 @@ class RoleController extends Controller
     /**
      * @param Request $request
      * @param int $id
+     * @throws NotFoundHttpException
      * @return RedirectResponse|Response
      */
     public function editAction(Request $request, $id)
     {
-        return $this->renderForm($request, $this->getRoleRepo()->find($id));
+        $role = $this->getRoleRepo()->find($id);
+
+        if (!$role) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->renderForm($request, $role);
     }
 
     /**
      * @param int $id
+     * @throws NotFoundHttpException
      * @return Response
      */
     public function detailAction($id)
     {
+        $role = $this->getRoleRepo()->find($id);
+
+        if (!$role) {
+            throw new NotFoundHttpException();
+        }
+
         return $this->render('DOHInfraBundle:Role:detail.html.twig', array(
-            'role' => $this->getRoleRepo()->find($id),
+            'role' => $role,
         ));
     }
 
@@ -61,19 +76,19 @@ class RoleController extends Controller
         return $this->getDoctrine()->getRepository('DOHInfraBundle:Role');
     }
 
-    protected function renderForm(Request $request, Role $Role)
+    protected function renderForm(Request $request, Role $role)
     {
-        $form = $this->createForm('doh_infra_role', $Role);
+        $form = $this->createForm('doh_infra_role', $role);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($Role);
+            $em->persist($role);
             $em->flush();
 
             return $this->redirect($this->generateUrl('doh_infra_role_detail', array(
-                'id' => $Role->getId(),
+                'id' => $role->getId(),
             )));
         }
 
