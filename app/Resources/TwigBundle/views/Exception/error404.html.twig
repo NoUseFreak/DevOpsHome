@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Error {{ status_text }}{% endblock %}
+
+{% block content_full %}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="doh-block">
+                <h2 class="doh-block-title">Oops! An Error Occurred</h2>
+                <p>The page you requested could not be found.</p>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+{% endblock %}

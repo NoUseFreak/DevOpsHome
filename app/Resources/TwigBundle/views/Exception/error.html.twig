@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Error {{ status_text }}{% endblock %}
+
+{% block subnavigation %}{% endblock %}
+{% block subnavigation_user %}{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block content_full %}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="doh-block">
+                <h2 class="doh-block-title">Oops! An Error Occurred</h2>
+                <p>The server returned a "{{ status_code }} {{ status_text }}".</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+{% endblock %}
+
+{% block keyboard_control %}{% endblock %}
