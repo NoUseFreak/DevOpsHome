@@ -33,6 +33,11 @@ services:
 
   doh_infra.form.type.server_changelog:
     class: %doh_infra.form.type.server_changelog.class%
+    calls:
+      - [setRequest, [@request]]
+      - [setGuideRepository, [@doh_guide.repo.guide]]
+    public: true
+    scope: request
     tags:
       - { name: form.type, alias: doh_infra_server_changelog }
 

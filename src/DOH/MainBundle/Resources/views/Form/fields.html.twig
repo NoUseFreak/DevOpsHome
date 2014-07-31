@@ -131,7 +131,7 @@
 {% block collection_widget %}
     {% set label = false %}
     {{ block('form_label') }}
-    <ul class="collection doh-form-collection list-group " data-prototype="{{ form_widget(prototype)|e }}">
+    <ul id="{{ id }}" class="collection doh-form-collection list-group "{% if prototype is defined %} data-prototype="{{ form_widget(prototype)|e }}"{% endif %}>
         {% for item in form.children %}
             <li class="list-group-item">
                 {{ form_widget(item) }}
