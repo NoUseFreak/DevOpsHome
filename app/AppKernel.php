@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new DOH\MainBundle\DOHMainBundle(),
             new DOH\InfraBundle\DOHInfraBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new DOH\GuideBundle\DOHGuideBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
