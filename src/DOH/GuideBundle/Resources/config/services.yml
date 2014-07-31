@@ -1,0 +1,14 @@
+parameters:
+  doh_guide.form.type.guide.class:     DOH\GuideBundle\Form\GuideType
+  doh_guide.form.type.parameter.class: DOH\GuideBundle\Form\Type\ParameterType
+
+services:
+  doh_guide.form.type.guide:
+    class: %doh_guide.form.type.guide.class%
+    tags:
+      - { name: form.type, alias: doh_guide_guide }
+
+  doh_guide.form.parameter.parameter:
+    class: %doh_guide.form.type.parameter.class%
+    tags:
+      - { name: form.type, alias: doh_guide_parameter }
