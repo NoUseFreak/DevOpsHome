@@ -67,43 +67,6 @@ class ChangelogType extends AbstractType
                 ))
             ->add('save', 'submit')
         ;
-
-        $formModifier = function(ServerChangelog $changelog) {
-            if (!$this->request->request->has('doh_infra_server_changelog')) {
-                return;
-            }
-            $formData = $this->request->request->get('doh_infra_server_changelog');
-            if (!isset($formData['guide']) || !$formData['guide']) {
-                return;
-            }
-
-            $guide = $this->guideRepository->find($formData['guide']);
-
-            $data = array_map(function($item) {
-                    unset($item['description']);
-                    $item['data'] = '';
-
-                    return $item;
-                }, $guide->getParameters());
-
-            $changelog->setGuideParameters(array_values($data));
-        };
-
-        $builder->addEventListener(
-            FormEvents::PRE_SET_DATA,
-            function (FormEvent $event) use ($formModifier) {
-                $changelog = $event->getData();
-                $formModifier($changelog);
-            }
-        );
-
-        $builder->get('guideParameters')->addEventListener(
-            FormEvents::PRE_SUBMIT,
-            function (FormEvent $event) use ($formModifier) {
-                $changelog = $event->getForm()->getParent()->getData();
-                $formModifier($changelog);
-            }
-        );
     }
 
     public function getName()
