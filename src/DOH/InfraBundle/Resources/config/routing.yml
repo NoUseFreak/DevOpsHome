@@ -33,6 +33,12 @@ doh_infra_changelog_new:
     requirements:
         id:  \d+
 
+doh_infra_changelog_detail:
+    path:     /infra/changelog/{cid}
+    defaults: { _controller: DOHInfraBundle:Changelog:detail }
+    requirements:
+        cid:  \d+
+
 ##
 # Farms
 ##

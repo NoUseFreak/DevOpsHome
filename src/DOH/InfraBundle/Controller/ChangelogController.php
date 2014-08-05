@@ -74,6 +74,13 @@ class ChangelogController extends Controller
         ));
     }
 
+    public function detailAction($cid)
+    {
+        return $this->render('DOHInfraBundle:Changelog:detail.html.twig', array(
+            'changelog' => $this->findChangelog($cid),
+        ));
+    }
+
     /**
      * @param $id
      * @throws NotFoundHttpException
@@ -88,5 +95,21 @@ class ChangelogController extends Controller
         }
 
         return $server;
+    }
+
+    /**
+     * @param $id
+     * @throws NotFoundHttpException
+     * @return Server
+     */
+    private function findChangelog($id)
+    {
+        $changelog = $this->getDoctrine()->getRepository('DOHInfraBundle:ServerChangelog')->find($id);
+
+        if (!$changelog) {
+            throw new NotFoundHttpException();
+        }
+
+        return $changelog;
     }
 }
