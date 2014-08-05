@@ -16,7 +16,10 @@ class ParameterType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description')
+            ->add('token')
+            ->add('description', 'textarea', array(
+                'required' => false,
+            ))
         ;
     }
 
