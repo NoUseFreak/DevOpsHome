@@ -1,16 +1,22 @@
-<ul class="list-unstyled">
+<div class="row">
     {% for changelog in changelogs %}
-        <li>
-            <h4>{{ changelog.title }}</h4>
-            <h5>User - <time class="moment since" datetime="{{ changelog.timestamp|date('Y-m-d H:i:s') }}">{{ changelog.timestamp|date }}</time></h5>
-            {{ changelog.description|markdown }}
-            {% if changelog.guide %}
-                <p>
-                    Guide: <a href="{{ path('doh_infra_changelog_detail', {cid: changelog.id}) }}">{{ changelog.guide.name }}</a>
-                </p>
-            {% endif %}
-        </li>
+    <div class="col-md-12">
+        <section class="portlet grey">
+            <header class="header">
+                {{ changelog.title }}
+                User - <time class="moment since" datetime="{{ changelog.timestamp|date('Y-m-d H:i:s') }}">{{ changelog.timestamp|date }}</time>
+            </header>
+            <div class="body">
+                {{ changelog.description|markdown }}
+                {% if changelog.guide %}
+                    <p>
+                        Guide: <a href="{{ path('doh_infra_changelog_detail', {cid: changelog.id}) }}">{{ changelog.guide.name }}</a>
+                    </p>
+                {% endif %}
+            </div>
+        </section>
+    </div>
     {% else %}
         <li>No changes logged.</li>
     {% endfor %}
-</ul>
+</div>

@@ -1,35 +1,71 @@
-{% extends 'DOHGuideBundle:Default:index.html.twig' %}
+{% extends '::detail.html.twig' %}
 
 {% block title %}{{ parent() }} - Guide - {{ guide.name }}{% endblock %}
 
-{% block content %}
-    <div class="doh-block">
-        <h2 class="doh-block-title">{{ guide.name }}</h2>
-        <div class="doh-action">
-            <ul class="list-inline">
-                <li><a href="{{ path('doh_guide_guide_edit', {id: guide.id}) }}">Edit</a></li>
-            </ul>
+{#{% block content_header %}#}
+    {#{% include ":Component:header.html.twig" with {#}
+    {#'title': server.name,#}
+    {#'title_caption': 'caption',#}
+    {#'breadcrumb': [#}
+        {#{'title': 'Infrastructure', 'link': path('doh_guide_server_list')},#}
+        {#{'title': 'Server', 'link': path('doh_guide_server_list')}#}
+    {#]#}
+    {#} %}#}
+{#{% endblock %}#}
+
+{% block header %}
+    {% embed ":Component:box_header.html.twig" %}
+        {% block title %}{{ guide.name }}{% endblock %}
+        {% block title_icon %}<i class="fa fa-file-o"></i>{% endblock %}
+        {% block actions %}
+            <a href="{{ path('doh_guide_guide_edit', {id: guide.id}) }}" class="btn btn-success btn-sm">
+                <i class="fa fa-edit"></i> Edit
+            </a>
+            <a href="{{ path('doh_guide_guide_edit', {id: guide.id}) }}" class="btn btn-danger btn-sm">
+                <i class="fa fa-trash-o"></i> Delete
+            </a>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block detail_tabs %}
+    <li class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
+{% endblock %}
+
+{% block detail_content %}
+    <div class="tab-pane active" id="general">
+        <div class="row">
+            <div class="col-md-12">
+                <section class="portlet grey">
+                    <header class="header">Parameters</header>
+                    <div class="body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for param in guide.parameters %}
+                                <tr>
+                                    <td>{{ param.name}}</td>
+                                    <td>{{ param.description }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-12">
+                <section class="portlet grey">
+                    <header class="header">Guide</header>
+                    <div class="body">
+                        {{ guide.text }}
+                    </div>
+                </section>
+            </div>
         </div>
-
-        <h3>Parameters</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for param in guide.parameters %}
-                <tr>
-                    <td>{{ param.name}}</td>
-                    <td>{{ param.description }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <h3>Text</h3>
-        {{ guide.text }}
     </div>
 {% endblock %}

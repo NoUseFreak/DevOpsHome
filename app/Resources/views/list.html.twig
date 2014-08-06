@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block content %}
+    <section class="page-list row">
+        <div class="col-md-12">
+            {% block header %}{% endblock %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            {% block table_head %}
+                                <th class="identifier">#</th>
+                                <th class="actions">Actions</th>
+                                <th>Name</th>
+                            {% endblock %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% block table_rows %}{% endblock %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,26 +1,46 @@
-{% extends 'DOHInfraBundle:Default:index.html.twig' %}
+{% extends '::detail.html.twig' %}
 
 {% block title %}{{ parent() }} - Changelog - {{ changelog.title }}{% endblock %}
 
-{% block content %}
-    <div class="doh-block">
-        <h2 class="doh-block-title">{{ changelog.title }}</h2>
+{% block header %}
+    {% embed ":Component:box_header.html.twig" %}
+        {% block title %}{{ changelog.title }}{% endblock %}
+        {% block title_icon %}<i class="fa fa-file-o"></i>{% endblock %}
+    {% endembed %}
+{% endblock %}
 
-        <h3>Description</h3>
-        <p>
-            {{ changelog.description }}
-        </p>
+{% block detail_tabs %}
+    <li class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
+{% endblock %}
 
-        <h3>Parameter</h3>
-        <table class="table">
-            <tbody>
-            {% for param in changelog.guideParameters %}
-                <tr>
-                    <td>{{ param.name }}</td>
-                    <td>{{ param.data }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+{% block detail_content %}
+    <div class="tab-pane active" id="general">
+        <div class="row">
+            <div class="col-md-6">
+                <section class="portlet grey">
+                    <header class="header">Description</header>
+                    <div class="body">
+                        {{ changelog.description }}
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section class="portlet grey">
+                    <header class="header">Parameter</header>
+                    <div class="body">
+                        <table class="table">
+                            <tbody>
+                            {% for param in changelog.guideParameters %}
+                                <tr>
+                                    <td>{{ param.name }}</td>
+                                    <td>{{ param.data }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -1,10 +1,50 @@
-{% extends '::base.html.twig' %}
+{% extends '::detail.html.twig' %}
 
-{% block subnavigation %}
-    <a href="{{ path('doh_main_dashboard') }}" class="doh-nav-item {{ _menu.active('doh_main_dashboard') }}">Dashboard</a>
-    <a href="{{ path('doh_main_about') }}" class="doh-nav-item {{ _menu.active('doh_main_about') }}">About</a>
+{% block content_header %}
+    {% include ":Component:header.html.twig" with {
+    'title': 'Dashboard',
+    'title_caption': 'caption',
+    'breadcrumb': []
+    } %}
 {% endblock %}
 
-{% block content %}
-    content
+{% block detail_full %}
+    <div class="row">
+        <div class="col-md-6">
+            <section class="portlet grey">
+                <header class="header">New server</header>
+                <div class="body">
+                    <ul class="feed list-unstyled">
+                        {% for server in servers %}
+                            <li class="row">
+                                <i class="col-sm-1 fa fa-hdd-o"></i>
+                                <div class="body col-sm-8 ">
+                                    <a href="{{ path('doh_infra_server_detail', {'id': server.id}) }}">{{ server.name }}</a>
+                                </div>
+                                <time class="col-sm-3">now</time>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-6">
+            <section class="portlet grey">
+                <header class="header">New guides</header>
+                <div class="body">
+                    <ul class="feed list-unstyled">
+                        {% for guide in guides %}
+                            <li class="row">
+                                <i class="col-sm-1 fa fa-hdd-o"></i>
+                                <div class="body col-sm-8 ">
+                                    <a href="{{ path('doh_guide_guide_detail', {'id': guide.id}) }}">{{ guide.name }}</a>
+                                </div>
+                                <time class="col-sm-3">now</time>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
 {% endblock %}

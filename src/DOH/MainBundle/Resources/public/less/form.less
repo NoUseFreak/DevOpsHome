@@ -1,0 +1,27 @@
+@form-control-color: #e5e5e5;
+@form-control-active-color: #999999;
+
+.page-form {
+  .form-content {
+    .nav-tabs {
+      margin-bottom: 15px;
+    }
+    .form-control {
+      border-color: @form-control-color;
+      transition: border-color 0.15s ease-in-out 0s;
+      &:focus {
+        border-color: @form-control-active-color;
+      }
+      &.required {
+        box-shadow: 0 0;
+      }
+    }
+    .control-label.required:after {
+      content: " *";
+      color: @brand-danger;
+    }
+    .form-group > [class^="col-"] {
+      text-align: right;
+    }
+  }
+}

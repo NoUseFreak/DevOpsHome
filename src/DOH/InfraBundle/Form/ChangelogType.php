@@ -7,7 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DOH\InfraBundle\Form\Type;
+namespace DOH\InfraBundle\Form;
 
 use DOH\GuideBundle\Entity\GuideRepository;
 use DOH\InfraBundle\Entity\ServerChangelog;
@@ -65,7 +65,6 @@ class ChangelogType extends AbstractType
                         'required'  => false,
                     ),
                 ))
-            ->add('save', 'submit')
         ;
     }
 

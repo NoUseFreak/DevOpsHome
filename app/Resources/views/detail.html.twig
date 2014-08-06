@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block content %}
+    <section class="page-detail row">
+        <div class="col-md-12">
+            {% block header %}{% endblock %}
+            {% block detail_full %}
+                <div class="form-content">
+                    <ul class="nav nav-tabs" role="tablist">
+                        {% block detail_tabs %}{% endblock %}
+                    </ul>
+
+                    <div class="tab-content">
+                        {% block detail_content %}{% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </section>
+{% endblock %}

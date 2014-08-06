@@ -1,0 +1,28 @@
+{% block page_header %}
+    <h1 class="page-title">{{ title }} {% if title_caption is defined %}<small>{{ title_caption }}</small>{% endif %}</h1>
+    <div class="page-bar">
+        {% if breadcrumb is defined %}
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i> <a href="{{ path('doh_main_dashboard') }}">Home</a></li>
+            {% for item in breadcrumb %}
+                <li><a href="{{ item.link }}">{{ item.title }}</a></li>
+            {% endfor %}
+            <li class="active">{{ title }}</li>
+        </ol>
+        {% endif %}
+        <div class="page-actions">
+            <div class="btn-group">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                    Action <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

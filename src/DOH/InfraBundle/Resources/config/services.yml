@@ -1,13 +1,13 @@
 parameters:
 
-  doh_infra.form.type.server.class:                DOH\InfraBundle\Form\Type\ServerType
+  doh_infra.form.type.server.class:                DOH\InfraBundle\Form\ServerType
   doh_infra.form.type.server_spec_sheet.class:     DOH\InfraBundle\Form\Type\ServerSpecSheetType
   doh_infra.form.type.server_disk_partition.class: DOH\InfraBundle\Form\Type\DiskPartitionType
   doh_infra.form.type.server_nic.class:            DOH\InfraBundle\Form\Type\NicType
-  doh_infra.form.type.server_changelog.class:      DOH\InfraBundle\Form\Type\ChangelogType
+  doh_infra.form.type.server_changelog.class:      DOH\InfraBundle\Form\ChangelogType
   doh_infra.keyboard_control_extension.class:      DOH\InfraBundle\DependencyInjection\KeyboardControlExtension
-  doh_infra.form.type.farm.class:                  DOH\InfraBundle\Form\Type\FarmType
-  doh_infra.form.type.role.class:                  DOH\InfraBundle\Form\Type\RoleType
+  doh_infra.form.type.farm.class:                  DOH\InfraBundle\Form\FarmType
+  doh_infra.form.type.role.class:                  DOH\InfraBundle\Form\RoleType
 
 services:
 

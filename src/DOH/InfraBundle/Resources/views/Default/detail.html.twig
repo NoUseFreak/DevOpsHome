@@ -1,134 +1,176 @@
-{% extends 'DOHInfraBundle:Default:index.html.twig' %}
+{% extends '::detail.html.twig' %}
 
 {% block title %}{{ parent() }} - New{% endblock %}
 
-{% block content %}
-    <div class="doh-block">
-        <h2 class="doh-block-title">{{ server.name }}</h2>
-        <div class="doh-action">
-            <ul class="list-inline">
-                <li><a href="{{ path('doh_infra_server_edit', {id: server.id}) }}">Edit</a></li>
-            </ul>
-        </div>
+{#{% block content_header %}#}
+    {#{% include ":Component:header.html.twig" with {#}
+    {#'title': server.name,#}
+    {#'title_caption': 'caption',#}
+    {#'breadcrumb': [#}
+        {#{'title': 'Infrastructure', 'link': path('doh_infra_server_list')},#}
+        {#{'title': 'Server', 'link': path('doh_infra_server_list')}#}
+    {#]#}
+    {#} %}#}
+{#{% endblock %}#}
 
-        <h3>Farms</h3>
-        <ul>
-            {% for farm in server.farms %}
-                <li><a href="{{ path('doh_infra_farm_detail', {id: farm.id}) }}">{{ farm.name }}</a></li>
-            {% else %}
-                <li>Not in any farms.</li>
-            {% endfor %}
-        </ul>
-
-        <h3>Roles</h3>
-        <ul>
-            {% for role in server.roles %}
-                <li><a href="{{ path('doh_infra_role_detail', {id: role.id}) }}">{{ role.name }}</a></li>
-            {% else %}
-                <li>No roles defined.</li>
-            {% endfor %}
-        </ul>
-
-        <h3>Specsheet</h3>
-        <table class="doh-spec-sheet">
-            <tbody>
-                <tr>
-                    <th>Type:</th>
-                    <td>{{ server.specSheet.type }}</td>
-                    <th>OS:</th>
-                    <td>{{ server.specSheet.operatingSystem }} - version</td>
-                </tr>
-                <tr>
-                    <th>vCPU:</th>
-                    <td>{{ server.specSheet.vcpu }}</td>
-                    <th>RAM:</th>
-                    <td>{{ server.specSheet.ram }} MB</td>
-                </tr>
-                <tr>
-                    <th>Disk space:</th>
-                    <td colspan="3">{{ server.specSheet.diskSpace }} GB</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="doh-block doh-tabbed">
-        <ul class="doh-tabs">
-            <li class="active"><a href="#doh-infra-server-notes" role="tab" data-toggle="tab">Notes</a></li>
-            <li><a href="#doh-infra-server-changelog" role="tab" data-toggle="tab">Changelog</a></li>
-            <li><a href="#doh-infra-server-partition" role="tab" data-toggle="tab">Partition info</a></li>
-            <li><a href="#doh-infra-server-nics" role="tab" data-toggle="tab">Nics</a></li>
-        </ul>
-        <div class="tab-content">
-
-            <div class="tab-pane active" id="doh-infra-server-notes">
-                content1
-            </div>
-
-            <div class="tab-pane" id="doh-infra-server-changelog">
-                {{ render(controller('DOHInfraBundle:Changelog:list', {id: server.id})) }}
-            </div>
-
-            <div class="tab-pane" id="doh-infra-server-partition">
-                {% if server.specSheet.partitionInfo|length %}
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Filesystem</th>
-                            <th>Disk size</th>
-                            <th>Mount point</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for partition in server.specSheet.partitionInfo %}
-                            <tr>
-                                <td>{{ partition.filesystem }}</td>
-                                <td>{{ partition.size }} GB</td>
-                                <td>{{ partition.mount_point }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    No partition info available.
-                {% endif %}
-            </div>
-
-            <div class="tab-pane" id="doh-infra-server-nics">
-                {% if server.nics|length %}
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Ip</th>
-                            <th>Netmask</th>
-                            <th>Gateway</th>
-                            <th>DNS server</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for nic in server.nics %}
-                            <tr>
-                                <td>{{ nic.name}}</td>
-                                <td>{{ nic.ip}}</td>
-                                <td>{{ nic.netmask}}</td>
-                                <td>{{ nic.gateway}}</td>
-                                <td>{{ nic.dns}}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    No NIC info available.
-                {% endif %}
-            </div>
-
-        </div>
-    </div>
+{% block header %}
+    {% embed ":Component:box_header.html.twig" %}
+        {% block title %}{{ server.name }}{% endblock %}
+        {% block title_icon %}<i class="fa fa-hdd-o"></i>{% endblock %}
+        {% block actions %}
+            <a href="{{ path('doh_infra_changelog_new', {id: server.id}) }}" class="btn btn-primary btn-sm">
+                <i class="fa fa-clock-o"></i> Log change
+            </a>
+            <a href="{{ path('doh_infra_server_edit', {id: server.id}) }}" class="btn btn-success btn-sm">
+                <i class="fa fa-edit"></i> Edit
+            </a>
+            <a href="{{ path('doh_infra_server_edit', {id: server.id}) }}" class="btn btn-danger btn-sm">
+                <i class="fa fa-trash-o"></i> Delete
+            </a>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
-{% block content_side %}
-    <p>
-        <a href="{{ path('doh_infra_changelog_new', {id: server.id}) }}" class="btn btn-success btn-block">Log change</a>
-    </p>
-    {{ parent() }}
+{% block detail_tabs %}
+    <li class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
+    <li><a href="#notes" role="tab" data-toggle="tab">Notes</a></li>
+    <li><a href="#changelog" role="tab" data-toggle="tab">Changelog <span class="badge">{{ server.changelogs|length }}</span></a></li>
+{% endblock %}
+
+{% block detail_content %}
+    <div class="tab-pane active" id="general">
+        <div class="row">
+            <div class="col-md-6">
+                <section class="portlet grey">
+                    <header class="header">Details</header>
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Farms
+                            </div>
+                            <div class="col-sm-8">
+                                {% for farm in server.farms %}
+                                    <a href="{{ path('doh_infra_farm_detail', {id: farm.id}) }}">{{ farm.name }}</a>
+                                    {% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Roles
+                            </div>
+                            <div class="col-sm-8">
+                                {% for role in server.roles %}
+                                    <a href="{{ path('doh_infra_role_detail', {id: role.id}) }}">{{ role.name }}</a>
+                                    {% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Operating system
+                            </div>
+                            <div class="col-sm-8">
+                                {{ server.specSheet.operatingSystem }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Type
+                            </div>
+                            <div class="col-sm-8">
+                                {{ server.specSheet.type }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                vCPU
+                            </div>
+                            <div class="col-sm-8">
+                                {{ server.specSheet.vcpu }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                RAM
+                            </div>
+                            <div class="col-sm-8">
+                                {{ server.specSheet.ram }}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section class="portlet grey">
+                    <header class="header">Partition information</header>
+                    <div class="body">
+                        {% if server.specSheet.partitionInfo|length %}
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Filesystem</th>
+                                    <th>Disk size</th>
+                                    <th>Mount point</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for partition in server.specSheet.partitionInfo %}
+                                    <tr>
+                                        <td>{{ partition.filesystem }}</td>
+                                        <td>{{ partition.size }} GB</td>
+                                        <td>{{ partition.mount_point }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            No partition info available.
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-12">
+                <section class="portlet grey">
+                    <header class="header">Network information</header>
+                    <div class="body">
+                        {% if server.nics|length %}
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Ip</th>
+                                    <th>Netmask</th>
+                                    <th>Gateway</th>
+                                    <th>DNS server</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for nic in server.nics %}
+                                    <tr>
+                                        <td>{{ nic.name}}</td>
+                                        <td>{{ nic.ip}}</td>
+                                        <td>{{ nic.netmask}}</td>
+                                        <td>{{ nic.gateway}}</td>
+                                        <td>{{ nic.dns}}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            No NIC info available.
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="tab-pane" id="notes">
+
+    </div>
+    <div class="tab-pane" id="changelog">
+        {{ render(controller('DOHInfraBundle:Changelog:list', {id: server.id})) }}
+    </div>
 {% endblock %}

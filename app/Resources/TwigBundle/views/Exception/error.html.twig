@@ -7,14 +7,17 @@
 {% block sidebar %}{% endblock %}
 
 {% block content_full %}
-    <div class="row">
-        <div class="col-md-9">
-            <div class="doh-block">
-                <h2 class="doh-block-title">Oops! An Error Occurred</h2>
-                <p>The server returned a "{{ status_code }} {{ status_text }}".</p>
+    <div class="row page-error">
+        <div class="col-md-12">
+            <div class="number text-muted">{{ status_code }}</div>
+            <div class="message">
+                <h2>Oops! An Error Occurred.</h2>
+                <p>
+                    The server returned a "{{ status_code }} {{ status_text }}".
+                    <br/>
+                    Return to the <a href="{{ path('doh_main_dashboard') }}">dashboard</a> or try the search bar below.
+                </p>
             </div>
-        </div>
-        <div class="col-md-3">
         </div>
     </div>
 {% endblock %}

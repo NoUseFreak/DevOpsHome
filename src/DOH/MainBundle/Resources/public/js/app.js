@@ -18,3 +18,29 @@ $(function() {
         });
 });
 hljs.initHighlightingOnLoad();
+
+
+$(function(){
+    var $form = $('.navbar-fixed-top form');
+    $form
+        .on('click', 'button', function() {
+            if (!$form.find('input').val()) {
+                $form.toggleClass('open');
+                return false;
+            }
+        })
+    ;
+});
+
+$(function(){
+    (function() {
+        var updateContentHeight = function() {
+            var height = ($(document).height() - $('.page-header').height() * 2 )+ 'px';
+            $('.page-content').css('min-height', height);
+        };
+        updateContentHeight();
+        $(window).resize(function() {
+            updateContentHeight();
+        });
+    })();
+});

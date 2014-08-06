@@ -1,0 +1,68 @@
+.page-header {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-fixed-top {
+  border-bottom: 0;
+}
+
+.navbar {
+  margin-bottom: 20px;
+  min-height: 41px;
+
+  .navbar-right:last-child {
+    margin-right: 20px;
+  }
+}
+
+.dropdown-user {
+  img {
+    display: inline-block;
+    float: left;
+    height: 29px;
+    margin-right: 10px;
+    margin-top: -5px;
+  }
+}
+
+.navbar-brand {
+  height: auto;
+  padding: 10px;
+}
+.navbar-nav > li > a {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+
+// search
+
+.navbar-fixed-top {
+  form {
+    margin: 0;
+    padding: 0;
+    &.open {
+      transition: all 0.6s ease 0s;
+      background-color: #333;
+      input.form-control {
+        width: 200px;
+      }
+    }
+    input.form-control {
+      background-color: transparent;
+      border: 0 none;
+      box-shadow: 0 0;
+      color: #ffffff;
+      margin: 0;
+      padding: 10px 0 10px 10px;
+      width: 0;
+    }
+    button {
+      background-color: transparent;
+      border: 0 none;
+      color: #fff;
+      padding: 10px 10px;
+    }
+  }
+}

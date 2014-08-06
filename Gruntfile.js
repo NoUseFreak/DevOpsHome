@@ -53,7 +53,6 @@ module.exports = function (grunt) {
                     'web/assets/css/app.min.css': [
                         'web/vendor/highlightjs/styles/github.css',
                         'web/vendor/select2/select2.css',
-                        'web/vendor/select2-bootstrap-css/select2-bootstrap.css',
                         'var/grunt/css/app.css'
                     ]
                 }
@@ -74,6 +73,7 @@ module.exports = function (grunt) {
                     'var/grunt/js/vendors.min.js': [
                         'web/vendor/jquery/dist/jquery.js',
                         'web/vendor/bootstrap/js/tab.js',
+                        'web/vendor/bootstrap/js/dropdown.js',
                         'web/vendor/bootstrap/js/modal.js',
                         'web/vendor/bootstrap/js/tooltip.js',
                         'web/vendor/mousetrap/mousetrap.js',

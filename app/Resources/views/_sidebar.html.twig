@@ -1,0 +1,39 @@
+<aside class="page-sidebar">
+    <ul>
+        <li class="active">
+            <a href="{{ path('doh_main_dashboard') }}">
+                <i class="fa fa-dashboard"></i>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('doh_infra_server_list') }}">
+                <i class="fa fa-sitemap"></i>
+                <span class="title">Infrastructure</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ path('doh_infra_server_list') }}">
+                        <i class="fa fa-hdd-o"></i> Servers
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('doh_infra_farm_list') }}">
+                        <i class="fa fa-cloud"></i> Farm
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('doh_infra_role_list') }}">
+                        <i class="fa fa-paperclip"></i> Role
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="{{ path('doh_guide_guide_list') }}">
+                <i class="fa fa-file-o"></i>
+                <span class="title">Guides</span>
+            </a>
+        </li>
+    </ul>
+</aside>
