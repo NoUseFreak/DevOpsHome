@@ -3,7 +3,7 @@ $(function() {
     /**
      * Collection
      */
-    $('ul.doh-form-collection').each(function() {
+    $('ul.doh-form-collection[data-prototype]').each(function() {
         var $collectionHolder = $(this);
         var $addTagLink = $('<a href="#" class="btn btn-primary add_link">Add</a>')
             .on('click', function (e) {

@@ -1,0 +1,26 @@
+{% extends 'DOHInfraBundle:Default:index.html.twig' %}
+
+{% block title %}{{ parent() }} - Changelog - {{ changelog.title }}{% endblock %}
+
+{% block content %}
+    <div class="doh-block">
+        <h2 class="doh-block-title">{{ changelog.title }}</h2>
+
+        <h3>Description</h3>
+        <p>
+            {{ changelog.description }}
+        </p>
+
+        <h3>Parameter</h3>
+        <table class="table">
+            <tbody>
+            {% for param in changelog.guideParameters %}
+                <tr>
+                    <td>{{ param.name }}</td>
+                    <td>{{ param.data }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

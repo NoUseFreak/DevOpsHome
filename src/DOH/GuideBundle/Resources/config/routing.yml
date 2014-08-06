@@ -1,0 +1,24 @@
+
+##
+# Guides
+##
+
+doh_guide_guide_list:
+    path:     /guide/guide
+    defaults: { _controller: DOHGuideBundle:Guide:list }
+
+doh_guide_guide_new:
+    path:     /guide/guide/new
+    defaults: { _controller: DOHGuideBundle:Guide:new }
+
+doh_guide_guide_detail:
+    path:     /guide/guide/{id}
+    defaults: { _controller: DOHGuideBundle:Guide:detail }
+    requirements:
+        id:  \d+
+
+doh_guide_guide_edit:
+    path:     /guide/guide/{id}/edit
+    defaults: { _controller: DOHGuideBundle:Guide:edit }
+    requirements:
+        id:  \d+

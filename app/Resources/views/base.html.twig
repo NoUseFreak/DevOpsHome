@@ -44,7 +44,12 @@
                                     <span>Infrastructure</span>
                                 </a>
                             </li>
-                            <li><a href="#"><i class="fa fa-file-o"></i><span>test</span></a></li>
+                            <li class="{{ _menu.active('doh_guide_guide_list') }}" data-toggle="tooltip" data-placement="right" title="Guide">
+                                <a href="{{ path('doh_guide_guide_list') }}">
+                                    <i class="fa fa-file-o"></i>
+                                    <span>Guide</span>
+                                </a>
+                            </li>
                             <li><a href="#"><i class="fa fa-list-alt"></i><span>test</span></a></li>
                             <li><a href="#"><i class="fa fa-windows"></i><span>test</span></a></li>
                             <li><a href="#"><i class="fa fa-linux"></i><span>test</span></a></li>

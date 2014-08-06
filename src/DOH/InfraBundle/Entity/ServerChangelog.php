@@ -3,6 +3,7 @@
 namespace DOH\InfraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DOH\GuideBundle\Entity\Guide;
 
 /**
  * ServerChangelog
@@ -49,6 +50,26 @@ class ServerChangelog
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+    /**
+     * @var Guide|null
+     *
+     * @ORM\ManyToOne(targetEntity="\DOH\GuideBundle\Entity\Guide")
+     * @ORM\JoinColumn(name="guide_id", referencedColumnName="id", nullable=true)
+     */
+    private $guide;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="array")
+     */
+    private $guideParameters;
+
+    public function __construct()
+    {
+        $this->guideParameters = array();
+    }
 
     /**
      * Get id
@@ -136,5 +157,37 @@ class ServerChangelog
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @param Guide|null $guide
+     */
+    public function setGuide($guide)
+    {
+        $this->guide = $guide;
+    }
+
+    /**
+     * @return Guide|null
+     */
+    public function getGuide()
+    {
+        return $this->guide;
+    }
+
+    /**
+     * @param array $guideParameters
+     */
+    public function setGuideParameters(array $guideParameters)
+    {
+        $this->guideParameters = $guideParameters;
+    }
+
+    /**
+     * @return array
+     */
+    public function getGuideParameters()
+    {
+        return $this->guideParameters;
     }
 }

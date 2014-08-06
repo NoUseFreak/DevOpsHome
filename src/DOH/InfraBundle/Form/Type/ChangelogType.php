@@ -9,8 +9,13 @@
  */
 namespace DOH\InfraBundle\Form\Type;
 
+use DOH\GuideBundle\Entity\GuideRepository;
+use DOH\InfraBundle\Entity\ServerChangelog;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -18,12 +23,50 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class ChangelogType extends AbstractType
 {
+    /**
+     * @var Request
+     */
+    protected $request;
+
+    /**
+     * @var GuideRepository
+     */
+    protected $guideRepository;
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     */
+    public function setRequest($request)
+    {
+        $this->request = $request;
+    }
+
+    /**
+     * @param \DOH\GuideBundle\Entity\GuideRepository $guideRepository
+     */
+    public function setGuideRepository($guideRepository)
+    {
+        $this->guideRepository = $guideRepository;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title')
             ->add('description')
-            ->add('save', 'submit');
+            ->add('guide', 'entity', array(
+                'class' => 'DOHGuideBundle:Guide',
+                'property' => 'name',
+                'required'  => false,
+            ))
+            ->add('guideParameters', 'collection', array(
+                    'type' => 'doh_guide_parameter_data',
+                    'options'  => array(
+                        'required'  => false,
+                    ),
+                ))
+            ->add('save', 'submit')
+        ;
     }
 
     public function getName()

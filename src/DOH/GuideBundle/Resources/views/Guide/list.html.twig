@@ -1,0 +1,30 @@
+{% extends 'DOHGuideBundle:Default:index.html.twig' %}
+
+{% block title %}{{ parent() }} - Guide - List{% endblock %}
+
+{% block content %}
+    <div class="doh-block">
+        <h2 class="doh-block-title">Guides</h2>
+        <div class="doh-action">
+            <ul class="list-inline">
+                <li><a href="{{ path('doh_guide_guide_new') }}">New</a></li>
+            </ul>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for guide in guides %}
+                    <tr>
+                        <td>{{ guide.id }}</td>
+                        <td><a href="{{ path('doh_guide_guide_detail', {id: guide.id}) }}">{{ guide.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
