@@ -1,0 +1,12 @@
+{% extends 'DOHGuideBundle:Default:index.html.twig' %}
+
+{% block title %}{{ parent() }} - Guide - New{% endblock %}
+
+{% block content %}
+
+    <div class="doh-block">
+        <h2 class="doh-block-title">New guide</h2>
+        {{ form(form) }}
+    </div>
+
+{% endblock %}

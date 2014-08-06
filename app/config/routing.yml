@@ -1,3 +1,7 @@
+doh_guide:
+    resource: "@DOHGuideBundle/Resources/config/routing.yml"
+    prefix:   /
+
 doh_infra:
     resource: "@DOHInfraBundle/Resources/config/routing.yml"
     prefix:   /

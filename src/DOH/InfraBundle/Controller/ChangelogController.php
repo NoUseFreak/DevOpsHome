@@ -28,9 +28,26 @@ class ChangelogController extends Controller
         $changelog->setServer($server);
         $changelog->setTimestamp(new \DateTime());
 
+        if ($data = $request->request->get('doh_infra_server_changelog', false)) {
+            if ($data['guide']) {
+
+                $guide = $this->get('doctrine')->getRepository('DOHGuideBundle:Guide')->find($data['guide']);
+
+                $params = array_map(function($item) {
+                        unset($item['description']);
+                        $item['data'] = '';
+
+                        return $item;
+                    }, $guide->getParameters());
+                $changelog->setGuideParameters($params);
+            }
+        }
+
         $form = $this->createForm('doh_infra_server_changelog', $changelog);
 
-        $form->handleRequest($request);
+        if (!$data || count($data) !== 1) {
+            $form->handleRequest($request);
+        }
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -57,6 +74,13 @@ class ChangelogController extends Controller
         ));
     }
 
+    public function detailAction($cid)
+    {
+        return $this->render('DOHInfraBundle:Changelog:detail.html.twig', array(
+            'changelog' => $this->findChangelog($cid),
+        ));
+    }
+
     /**
      * @param $id
      * @throws NotFoundHttpException
@@ -71,5 +95,21 @@ class ChangelogController extends Controller
         }
 
         return $server;
+    }
+
+    /**
+     * @param $id
+     * @throws NotFoundHttpException
+     * @return Server
+     */
+    private function findChangelog($id)
+    {
+        $changelog = $this->getDoctrine()->getRepository('DOHInfraBundle:ServerChangelog')->find($id);
+
+        if (!$changelog) {
+            throw new NotFoundHttpException();
+        }
+
+        return $changelog;
     }
 }

@@ -1,0 +1,27 @@
+parameters:
+  doh_guide.form.type.guide.class:          DOH\GuideBundle\Form\GuideType
+  doh_guide.form.type.parameter.class:      DOH\GuideBundle\Form\Type\ParameterType
+  doh_guide.form.type.parameter_data.class: DOH\GuideBundle\Form\Type\ParameterDataType
+
+services:
+  doh_guide.form.type.guide:
+    class: %doh_guide.form.type.guide.class%
+    tags:
+      - { name: form.type, alias: doh_guide_guide }
+
+  doh_guide.form.parameter.parameter:
+    class: %doh_guide.form.type.parameter.class%
+    tags:
+      - { name: form.type, alias: doh_guide_parameter }
+
+  doh_guide.form.parameter.parameter_data:
+    class: %doh_guide.form.type.parameter_data.class%
+    tags:
+      - { name: form.type, alias: doh_guide_parameter_data }
+
+  doh_guide.repo.guide:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - "DOHGuideBundle:Guide"
