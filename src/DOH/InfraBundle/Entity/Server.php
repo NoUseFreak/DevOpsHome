@@ -67,6 +67,14 @@ class Server
      **/
     private $roles;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notes", type="text")
+     */
+    private $notes;
+
     public function __construct()
     {
         $this->nics       = new ArrayCollection();
@@ -185,5 +193,21 @@ class Server
     public function getRoles()
     {
         return $this->roles;
+    }
+
+    /**
+     * @param string $notes
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 }

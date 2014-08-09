@@ -38,6 +38,9 @@ class ServerType extends AbstractType
                     'required'  => false,
                 ),
             ))
+            ->add('notes', null, array(
+                'required' => false,
+            ))
         ;
     }
 

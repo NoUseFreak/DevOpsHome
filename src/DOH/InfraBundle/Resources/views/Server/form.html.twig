@@ -25,6 +25,7 @@
     <li><a href="#specs" role="tab" data-toggle="tab">Specs</a></li>
     <li><a href="#nics" role="tab" data-toggle="tab">Network</a></li>
     <li><a href="#disk" role="tab" data-toggle="tab">Disk</a></li>
+    <li><a href="#notes" role="tab" data-toggle="tab">Notes</a></li>
 {% endblock %}
 
 {% block form_content %}
@@ -113,6 +114,16 @@
             </div>
             <div class="col-sm-10">
                 {{ form_widget(form.specSheet.partitionInfo) }}
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="notes">
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.notes) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.notes) }}
             </div>
         </div>
     </div>
