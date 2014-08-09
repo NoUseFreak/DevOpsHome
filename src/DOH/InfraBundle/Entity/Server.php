@@ -32,7 +32,7 @@ class Server
     /**
      * @var ServerSpecSheet
      *
-     * @ORM\OneToOne(targetEntity="ServerSpecSheet", inversedBy="server", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="ServerSpecSheet", inversedBy="server", cascade={"all"})
      * @ORM\JoinColumn(name="spec_sheet_id", referencedColumnName="id")
      */
     private $specSheet;
@@ -40,14 +40,14 @@ class Server
     /**
      * @var ServerNic
      *
-     * @ORM\OneToMany(targetEntity="ServerNic", mappedBy="server", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ServerNic", mappedBy="server", cascade={"all"})
      */
     private $nics;
 
     /**
      * @var ServerChangelog[]
      *
-     * @ORM\OneToMany(targetEntity="ServerChangelog", mappedBy="server", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ServerChangelog", mappedBy="server", cascade={"all"})
      */
     private $changelogs;
 

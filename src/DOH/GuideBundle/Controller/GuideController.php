@@ -47,6 +47,18 @@ class GuideController extends Controller
 
         return $this->renderForm($request, $guide);
     }
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse|Response
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $entity = $this->getGuideRepo()->find($id);
+
+        return $this->get('doh_main.form.factory.delete')
+            ->deleteForm($request, $entity, 'guide', $this->generateUrl('doh_guide_guide_list'));
+    }
 
     /**
      * @param int $id

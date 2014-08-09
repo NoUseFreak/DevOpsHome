@@ -7,7 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DOH\InfraBundle\Form;
+namespace DOH\MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,13 +16,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class RoleType extends AbstractType
+class DeleteEntityType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description', null, array(
+            ->add('name', 'text', array(
+                'disabled' => true,
                 'required' => false,
             ))
         ;
@@ -30,14 +30,6 @@ class RoleType extends AbstractType
 
     public function getName()
     {
-        return 'doh_infra_role';
-    }
-
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'DOH\InfraBundle\Entity\Role',
-            'cascade_validation' => true,
-        ));
+        return 'doh_main_delete_entity';
     }
 }

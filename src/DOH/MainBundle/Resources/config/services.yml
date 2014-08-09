@@ -5,6 +5,8 @@ parameters:
   doh_main.keyboard_control.handler.class:   DOH\MainBundle\KeyboardControl\KeyboardControlHandler
   doh_main.keyboard_control_extension.class: DOH\MainBundle\DependencyInjection\KeyboardControlExtension
   doh_main.menu_provider.class:              DOH\MainBundle\DependencyInjection\MenuProvider
+  doh_main.form.type.delete_entity.class:    DOH\MainBundle\Form\DeleteEntityType
+  doh_main.form.factory.delete.class:        DOH\MainBundle\Form\Factory\DeleteFormFactory
 
 services:
   doh_main.keyboard_control.handler:
@@ -20,3 +22,12 @@ services:
     class: %doh_main.menu_provider.class%
     tags:
       - { name: doh_main.menu.provider }
+
+  doh_main.form.type.delete_entity:
+    class: %doh_main.form.type.delete_entity.class%
+    tags:
+      - { name: form.type, alias: doh_main_delete_entity }
+
+  doh_main.form.factory.delete:
+    class: %doh_main.form.factory.delete.class%
+    arguments: [@form.factory, @doctrine, @templating]

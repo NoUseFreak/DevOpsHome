@@ -51,6 +51,19 @@ class RoleController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse|Response
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $entity = $this->getRoleRepo()->find($id);
+
+        return $this->get('doh_main.form.factory.delete')
+            ->deleteForm($request, $entity, 'role', $this->generateUrl('doh_infra_role_list'));
+    }
+
+    /**
      * @param int $id
      * @throws NotFoundHttpException
      * @return Response

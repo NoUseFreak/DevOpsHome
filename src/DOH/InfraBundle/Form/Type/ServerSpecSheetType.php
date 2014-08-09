@@ -21,11 +21,21 @@ class ServerSpecSheetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('operatingSystem')
-            ->add('ram')
-            ->add('vcpu')
-            ->add('diskSpace')
-            ->add('type')
+            ->add('operatingSystem', null, array(
+                    'required' => false,
+                ))
+            ->add('ram', null, array(
+                    'required' => false,
+                ))
+            ->add('vcpu', null, array(
+                    'required' => false,
+                ))
+            ->add('diskSpace', null, array(
+                    'required' => false,
+                ))
+            ->add('type', null, array(
+                    'required' => false,
+                ))
             ->add('partitionInfo', 'collection', array(
                 'type' => 'doh_infra_server_disk_partition',
                 'allow_add' => true,

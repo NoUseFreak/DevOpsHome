@@ -22,8 +22,12 @@ class ServerType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('farms')
-            ->add('roles')
+            ->add('farms', null, array(
+                'required' => false,
+            ))
+            ->add('roles', null, array(
+                'required' => false,
+            ))
             ->add('specSheet', 'doh_infra_server_spec_sheet')
             ->add('nics', 'collection', array(
                 'type' => 'doh_infra_server_nic',
