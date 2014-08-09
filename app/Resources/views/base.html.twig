@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>{% block title_full %}DoH - {% block title %}Dashboard{% endblock %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}"/>
     {% endblock %}
@@ -24,6 +25,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <div class="navbar-right">
+                {{ render(controller('DOHMainBundle:Menu:sidebar')) }}
                 <form role="form" class="navbar-form pull-left" action="#">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -45,12 +47,12 @@
                     </li>
                     <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i></a></li>
                 </ul>
+
             </div>
         </div>
     </header>
 
     <div class="page-container">
-        {{ render(controller('DOHMainBundle:Menu:sidebar')) }}
         {#{% include "_sidebar.html.twig" %}#}
         <div class="page-content">
             {% block content_full %}

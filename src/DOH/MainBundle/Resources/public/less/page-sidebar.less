@@ -1,54 +1,43 @@
-@sidebar-active-bgc: #f7f7f7;
+@sidebar-active-bgc: #080808;
+@sidebar-sub-bgc: #f7f7f7;
 @sidebar-hover-bgc: #ececec;
-
+@sidebar-link-color: #777;
 .page-container {
   position: relative;
   padding-top: 41px;
 }
 
 .page-sidebar {
-  width: 45px;
-  position: absolute;
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  .title {
-    display: none;
-    left: 100%;
-    position: absolute;
-    background-color: @sidebar-active-bgc;
-    top: 0;
-    width: 200px;
-    z-index: 1000;
-    height: 100%;
-    text-align: left;
+  a {
     padding: 10px;
+    display: block;
   }
+}
 
-  ul {
-    list-style: none outside none;
-    margin: 0;
-    padding: 0;
-    a {
-      display: block;
-      text-align: center;
+@media (min-width: @screen-sm-min) {
+  .page-sidebar {
+    position: absolute;
+    left: 0;
+    width: 45px;
+    margin-top: 50px;
+    .title {
+      color: #fff;
+      display: none;
+      left: 100%;
+      top: 0;
+      position: absolute;
+      background-color: #3d3d3d;
       padding: 10px;
-      color: #333;
+      width: 200px;
     }
-    li {
-      display: block;
+    > li {
       position: relative;
-    }
-  }
-
-  & > ul {
-    margin-top: 30px;
-    & > li {
+      > a {
+        width: 44px;
+      }
       &.active > a:after {
         background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-        border-color: transparent #ffffff transparent -moz-use-text-color;
+        border-color: transparent #ffffff transparent;
         border-style: double solid double none;
         border-width: 12px 8px 12px 0;
         content: "";
@@ -60,50 +49,39 @@
         top: 9px;
         width: 0;
       }
-      ul ul {
-        top: 0;
-      }
-    }
-  }
-
-  // hover
-  ul > li {
-    & ul {
-      display: none;
-      left: 100%;
-      position: absolute;
-      background-color: @sidebar-active-bgc;
-      top: 100%;
-      width: 200px;
-      z-index: 1000;
-      a {
-        text-align: left;
-      }
-    }
-    &:hover,
-    &.open {
-      background-color: @sidebar-active-bgc;
-      li:hover {
-        background-color: @sidebar-hover-bgc;
-      }
-      .title {
-        display: block;
-      }
-      & > a:after {
+      &:hover > a:after {
         display: none;
       }
-      & > ul {
-        display: block;
+      ul {
+        display: none;
+        left: 100%;
+        top: 100%;
+        position: absolute;
+        background-color: @sidebar-sub-bgc;
+        padding: 0;
+        li {
+          list-style: none;
+          &:hover {
+            background-color: @sidebar-hover-bgc;
+          }
+        }
+        a {
+          color: @sidebar-link-color;
+          display: block;
+          padding: 10px;
+          width: 200px;
+          text-decoration: none;
+        }
+      }
+      &:hover {
+        ul {
+          display: block;
+        }
+        .title {
+          display: block;
+        }
       }
     }
   }
-
-  i {
-    color: #959595;
-    font-size: 20px;
-    display: inline-block;
-    margin-right: 5px;
-    text-align: center;
-    width: 25px;
-  }
 }
+

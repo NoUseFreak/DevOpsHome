@@ -2,7 +2,7 @@
     {% import _self as macros %}
     {% for item in links %}
         <li{% if loop.first %} class="active"{% endif %}>
-            <a href="{{ item.link }}">
+            <a href="{{ item.link }}" class="dropdown">
                 <i class="{% if item.properties.icon_class is defined %}{{ item.properties.icon_class }}{% endif %}"></i>
                 {% if depth == 0 %}
                     <span class="title">{{ item.title }}</span>
@@ -21,8 +21,6 @@
 
 {% import _self as macros %}
 
-<aside class="page-sidebar">
-    <ul>
-        {{ macros.menu_links(menu.children, 0) }}
-    </ul>
-</aside>
+<ul class="nav navbar-nav page-sidebar">
+    {{ macros.menu_links(menu.children, 0) }}
+</ul>
