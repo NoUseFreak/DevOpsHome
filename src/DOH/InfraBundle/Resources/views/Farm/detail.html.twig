@@ -1,21 +1,59 @@
-{% extends 'DOHInfraBundle:Default:index.html.twig' %}
+{% extends '::detail.html.twig' %}
 
 {% block title %}{{ parent() }} - Farm - {{ farm.name }}{% endblock %}
 
-{% block content %}
-    <div class="doh-block">
-        <h2 class="doh-block-title">{{ farm.name }}</h2>
-        <div class="doh-action">
-            <ul class="list-inline">
-                <li><a href="{{ path('doh_infra_farm_edit', {id: farm.id}) }}">Edit</a></li>
-            </ul>
-        </div>
+{#{% block content_header %}#}
+    {#{% include ":Component:header.html.twig" with {#}
+    {#'title': server.name,#}
+    {#'title_caption': 'caption',#}
+    {#'breadcrumb': [#}
+        {#{'title': 'Infrastructure', 'link': path('doh_infra_server_list')},#}
+        {#{'title': 'Server', 'link': path('doh_infra_server_list')}#}
+    {#]#}
+    {#} %}#}
+{#{% endblock %}#}
 
-        <h3>Servers</h3>
-        <ul>
-            {% for server in farm.servers %}
-                <li><a href="{{ path('doh_infra_server_detail', {id: server.id}) }}">{{ server.name }}</a></li>
-            {% endfor %}
-        </ul>
+{% block header %}
+    {% embed ":Component:box_header.html.twig" %}
+        {% block title %}{{ farm.name }}{% endblock %}
+        {% block title_icon %}<i class="fa fa-cloud"></i>{% endblock %}
+        {% block actions %}
+            <a href="{{ path('doh_infra_farm_edit', {id: farm.id}) }}" class="btn btn-success btn-sm">
+                <i class="fa fa-edit"></i> Edit
+            </a>
+            <a href="{{ path('doh_infra_farm_edit', {id: farm.id}) }}" class="btn btn-danger btn-sm">
+                <i class="fa fa-trash-o"></i> Delete
+            </a>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block detail_tabs %}
+    <li class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
+{% endblock %}
+
+{% block detail_content %}
+    <div class="tab-pane active" id="general">
+        <div class="row">
+            <div class="col-md-6">
+                <section class="portlet grey">
+                    <header class="header">Details</header>
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Servers
+                            </div>
+                            <div class="col-sm-8">
+                                {% for server in farm.servers %}
+                                    <a href="{{ path('doh_infra_server_detail', {id: server.id}) }}">{{ server.name }}</a>
+                                    {% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
 {% endblock %}
+

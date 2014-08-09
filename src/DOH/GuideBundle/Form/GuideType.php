@@ -26,7 +26,6 @@ class GuideType extends AbstractType
                     'required'  => false,
                 ),
             ))
-            ->add('save', 'submit')
         ;
     }
     

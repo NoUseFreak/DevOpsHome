@@ -3,13 +3,25 @@
 {% block title %}Error {{ status_text }}{% endblock %}
 
 {% block content_full %}
-    <div class="row">
-        <div class="col-md-9">
-            <div class="doh-block">
-                <h2 class="doh-block-title">Oops! An Error Occurred</h2>
-                <p>The page you requested could not be found.</p>
+    <div class="row page-error">
+        <div class="col-md-12">
+            <div class="number text-muted">404</div>
+            <div class="message">
+                <h2>Oops! An Error Occurred.</h2>
+                <p>
+                    We can not find the page you're looking for.
+                    <br/>
+                    Return to the <a href="{{ path('doh_main_dashboard') }}">dashboard</a> or try the search bar below.
+                </p>
+                <form action="#">
+                    <div class="input-group">
+                        <input type="text" autofocus="" name="search" class="form-control" placeholder="keyword...">
+                        <span class="input-group-btn">
+                            <button class="btn blue" type="submit"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="col-md-3"></div>
     </div>
 {% endblock %}

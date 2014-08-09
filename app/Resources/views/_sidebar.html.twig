@@ -1,0 +1,26 @@
+{% macro menu_links(links, depth) %}
+    {% import _self as macros %}
+    {% for item in links %}
+        <li{% if loop.first %} class="active"{% endif %}>
+            <a href="{{ item.link }}" class="dropdown">
+                <i class="{% if item.properties.icon_class is defined %}{{ item.properties.icon_class }}{% endif %}"></i>
+                {% if depth == 0 %}
+                    <span class="title">{{ item.title }}</span>
+                {% else %}
+                    {{ item.title }}
+                {% endif %}
+            </a>
+            {% if item.children %}
+                <ul>
+                    {{ macros.menu_links(item.children, depth+1) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% import _self as macros %}
+
+<ul class="nav navbar-nav page-sidebar">
+    {{ macros.menu_links(menu.children, 0) }}
+</ul>

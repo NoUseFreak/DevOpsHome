@@ -1,11 +1,64 @@
-{% extends 'DOHInfraBundle:Default:index.html.twig' %}
+{% extends '::form.html.twig' %}
 
-{% block title %}{{ parent() }} - New{% endblock %}
+{% block title %}{{ parent() }} - Server - New{% endblock %}
 
-{% block content %}
-
-    <div class="doh-block">
-        <h2 class="doh-block-title">New changelog</h2>
-        {{ form(form) }}
-    </div>
+{% block header %}
+    {% embed ":Component:box_header.html.twig" %}
+        {% block title %}New server changelog{% endblock %}
+        {% block title_icon %}<i class="fa fa-file-o"></i>{% endblock %}
+        {% block actions %}
+            <button class="btn default btn-sm" type="reset">
+                <i class="fa fa-reply"></i> Reset
+            </button>
+            <button class="btn btn-success btn-sm" type="submit">
+                <i class="fa fa-check"></i> Save
+            </button>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
+
+{% block form_tabs %}
+    <li class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
+    <li><a href="#guide" role="tab" data-toggle="tab">Guide</a></li>
+{% endblock %}
+
+{% block form_content %}
+    <div class="tab-pane active" id="general">
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.title) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.title) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.description) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.description) }}
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="guide">
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.guide) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.guide) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.guideParameters) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.guideParameters) }}
+            </div>
+        </div>
+    </div>
+    {{ form_rest(form) }}
+{% endblock %}
+

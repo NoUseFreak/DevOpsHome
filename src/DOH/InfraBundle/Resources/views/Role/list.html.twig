@@ -1,30 +1,27 @@
-{% extends 'DOHInfraBundle:Default:index.html.twig' %}
+{% extends '::list.html.twig' %}
 
-{% block title %}{{ parent() }} - Farm - List{% endblock %}
+{% block title %}Infra - Role{% endblock %}
 
-{% block content %}
-    <div class="doh-block">
-        <h2 class="doh-block-title">Farms</h2>
-        <div class="doh-action">
-            <ul class="list-inline">
-                <li><a href="{{ path('doh_infra_role_new') }}">New</a></li>
-            </ul>
-        </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for role in roles %}
-                    <tr>
-                        <td>{{ role.id }}</td>
-                        <td><a href="{{ path('doh_infra_role_detail', {id: role.id}) }}">{{ role.name }}</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+{% block header %}
+    {% embed ":Component:box_header.html.twig" %}
+        {% block title %}Roles{% endblock %}
+        {% block title_icon %}<i class="fa fa-paperclip"></i>{% endblock %}
+        {% block actions %}
+            <a class="btn btn-success btn-sm" href="{{ path('doh_infra_role_new') }}"><i class="fa fa-plus"></i> New</a>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block table_rows %}
+    {% for role in roles %}
+        <tr>
+            <td>{{ role.id }}</td>
+            <td>
+                <a class="btn btn-xs btn-info" href="{{ path('doh_infra_role_detail', {id: role.id}) }}">
+                    <i class="fa fa-search"></i> View
+                </a>
+            </td>
+            <td>{{ role.name }}</td>
+        </tr>
+    {% endfor %}
 {% endblock %}

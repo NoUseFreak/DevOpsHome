@@ -1,44 +1,94 @@
 
+@project-vendor-path: "../../../../../../web/vendor";
+@project-vendor-url:  "../../../../../../vendor";
+
 /**
  * Bootstrap
  */
-@bootstrap-vendor-path: "../../../../../../web/vendor/bootstrap/less";
-@import "@{bootstrap-vendor-path}/variables";
-@import "@{bootstrap-vendor-path}/mixins";
-@import "@{bootstrap-vendor-path}/normalize";
-@import "@{bootstrap-vendor-path}/print";
-@import "@{bootstrap-vendor-path}/glyphicons";
-@import "@{bootstrap-vendor-path}/scaffolding";
-@import "@{bootstrap-vendor-path}/type";
-@import "@{bootstrap-vendor-path}/code";
-@import "@{bootstrap-vendor-path}/grid";
-@import "@{bootstrap-vendor-path}/tables";
-@import "@{bootstrap-vendor-path}/forms";
-@import "@{bootstrap-vendor-path}/buttons";
-@import "@{bootstrap-vendor-path}/navs";
-@import "@{bootstrap-vendor-path}/modals";
-@import "@{bootstrap-vendor-path}/badges";
-@import "@{bootstrap-vendor-path}/list-group";
-@import "@{bootstrap-vendor-path}/tooltip";
-@import "@{bootstrap-vendor-path}/close";
-@import "@{bootstrap-vendor-path}/alerts";
-@import "@{bootstrap-vendor-path}/utilities";
+@bootstrap-vendor-path: "@{project-vendor-path}/bootstrap/less";
+
+// Core variables and mixins
+@import "@{bootstrap-vendor-path}/variables.less";
+@import "variables/bootstrap";
+@import "@{bootstrap-vendor-path}/mixins.less";
+
+// Reset and dependencies
+@import "@{bootstrap-vendor-path}/normalize.less";
+@import "@{bootstrap-vendor-path}/print.less";
+@import "@{bootstrap-vendor-path}/glyphicons.less";
+
+// Core CSS
+@import "@{bootstrap-vendor-path}/scaffolding.less";
+@import "@{bootstrap-vendor-path}/type.less";
+@import "@{bootstrap-vendor-path}/code.less";
+@import "@{bootstrap-vendor-path}/grid.less";
+@import "@{bootstrap-vendor-path}/tables.less";
+@import "@{bootstrap-vendor-path}/forms.less";
+@import "@{bootstrap-vendor-path}/buttons.less";
+
+// Components
+@import "@{bootstrap-vendor-path}/component-animations.less";
+@import "@{bootstrap-vendor-path}/dropdowns.less";
+@import "@{bootstrap-vendor-path}/button-groups.less";
+@import "@{bootstrap-vendor-path}/input-groups.less";
+@import "@{bootstrap-vendor-path}/navs.less";
+@import "@{bootstrap-vendor-path}/navbar.less";
+@import "@{bootstrap-vendor-path}/breadcrumbs.less";
+//@import "@{bootstrap-vendor-path}/pagination.less";
+//@import "@{bootstrap-vendor-path}/pager.less";
+//@import "@{bootstrap-vendor-path}/labels.less";
+@import "@{bootstrap-vendor-path}/badges.less";
+//@import "@{bootstrap-vendor-path}/jumbotron.less";
+//@import "@{bootstrap-vendor-path}/thumbnails.less";
+@import "@{bootstrap-vendor-path}/alerts.less";
+//@import "@{bootstrap-vendor-path}/progress-bars.less";
+//@import "@{bootstrap-vendor-path}/media.less";
+//@import "@{bootstrap-vendor-path}/list-group.less";
+//@import "@{bootstrap-vendor-path}/panels.less";
+@import "@{bootstrap-vendor-path}/responsive-embed.less";
+//@import "@{bootstrap-vendor-path}/wells.less";
+//@import "@{bootstrap-vendor-path}/close.less";
+
+// Components w/ JavaScript
+@import "@{bootstrap-vendor-path}/modals.less";
+@import "@{bootstrap-vendor-path}/tooltip.less";
+//@import "@{bootstrap-vendor-path}/popovers.less";
+//@import "@{bootstrap-vendor-path}/carousel.less";
+
+// Utility classes
+@import "@{bootstrap-vendor-path}/utilities.less";
+@import "@{bootstrap-vendor-path}/responsive-utilities.less";
 
 /**
  * Font-Awesome
  */
-@fontawesome-vendor-path: "../../../../../../web/vendor/components-font-awesome/less";
+@fontawesome-vendor-path: "@{project-vendor-path}/components-font-awesome/less";
 @import "@{fontawesome-vendor-path}/variables";
-@fa-font-path: "../../../../../../vendor/components-font-awesome/fonts";
+@fa-font-path: "@{project-vendor-url}/components-font-awesome/fonts";
 @import "@{fontawesome-vendor-path}/mixins";
 @import "@{fontawesome-vendor-path}/path";
 @import "@{fontawesome-vendor-path}/core";
 @import "@{fontawesome-vendor-path}/icons";
 
 /**
+ * Vendor overwrites
+ */
+@import "select2";
+@import "highlight";
+
+/**
  * Project
  */
 @import "base";
-@import "select2";
-@import "highlight";
+@import "page-header";
+@import "page-sidebar";
+@import "page-content";
+@import "page-footer";
+@import "page-login";
+@import "box";
+@import "list";
+@import "portlet";
+@import "form";
+@import "feed";
 @import "user";
+@import "error";

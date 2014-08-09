@@ -2,6 +2,7 @@ parameters:
   doh_guide.form.type.guide.class:          DOH\GuideBundle\Form\GuideType
   doh_guide.form.type.parameter.class:      DOH\GuideBundle\Form\Type\ParameterType
   doh_guide.form.type.parameter_data.class: DOH\GuideBundle\Form\Type\ParameterDataType
+  doh_guide.menu_provider.class:            DOH\GuideBundle\DependencyInjection\MenuProvider
 
 services:
   doh_guide.form.type.guide:
@@ -25,3 +26,8 @@ services:
         factory_method: getRepository
         arguments:
             - "DOHGuideBundle:Guide"
+
+  doh_guide.menu_provider:
+    class: %doh_guide.menu_provider.class%
+    tags:
+      - { name: doh_main.menu.provider }

@@ -1,0 +1,87 @@
+@sidebar-active-bgc: #080808;
+@sidebar-sub-bgc: #f7f7f7;
+@sidebar-hover-bgc: #ececec;
+@sidebar-link-color: #777;
+.page-container {
+  position: relative;
+  padding-top: 41px;
+}
+
+.page-sidebar {
+  a {
+    padding: 10px;
+    display: block;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  .page-sidebar {
+    position: absolute;
+    left: 0;
+    width: 45px;
+    margin-top: 50px;
+    .title {
+      color: #fff;
+      display: none;
+      left: 100%;
+      top: 0;
+      position: absolute;
+      background-color: #3d3d3d;
+      padding: 10px;
+      width: 200px;
+    }
+    > li {
+      position: relative;
+      > a {
+        width: 44px;
+      }
+      &.active > a:after {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        border-color: transparent #ffffff transparent;
+        border-style: double solid double none;
+        border-width: 12px 8px 12px 0;
+        content: "";
+        display: block;
+        float: right;
+        height: 0;
+        position: absolute;
+        right: -2px;
+        top: 9px;
+        width: 0;
+      }
+      &:hover > a:after {
+        display: none;
+      }
+      ul {
+        display: none;
+        left: 100%;
+        top: 100%;
+        position: absolute;
+        background-color: @sidebar-sub-bgc;
+        padding: 0;
+        li {
+          list-style: none;
+          &:hover {
+            background-color: @sidebar-hover-bgc;
+          }
+        }
+        a {
+          color: @sidebar-link-color;
+          display: block;
+          padding: 10px;
+          width: 200px;
+          text-decoration: none;
+        }
+      }
+      &:hover {
+        ul {
+          display: block;
+        }
+        .title {
+          display: block;
+        }
+      }
+    }
+  }
+}
+

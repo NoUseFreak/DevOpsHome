@@ -1,23 +1,37 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-    <form role="form" class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
-        {% if error %}
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                {{ error|trans({}, 'FOSUserBundle') }}
-            </div>
-        {% endif %}
-
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" autofocus="" required="required" name="_username" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" class="form-control" value="{{ last_username }}">
-        <input type="password" required="" name="_password"  placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" class="form-control">
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
-            </label>
+    <div class="page-login">
+        <header class="logo">
+            <h1>DoH</h1>
+        </header>
+        <div class="form-wrapper">
+            <form role="form" action="{{ path("fos_user_security_check") }}" method="post">
+                <h2>Login</h2>
+                {% if error %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        {{ error|trans({}, 'FOSUserBundle') }}
+                    </div>
+                {% endif %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" autofocus="" required="required" name="_username" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" class="form-control" value="{{ last_username }}">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="password" required="" name="_password"  placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" class="form-control">
+                </div>
+                <div class="checkbox pull-left">
+                    <label>
+                        <input type="checkbox" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                    </label>
+                </div>
+                <button type="submit" name="_submit" class="btn pull-right btn-success">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }} <i class="fa fa-arrow-circle-o-right"></i></button>
+                <div class="clearfix"></div>
+            </form>
         </div>
-        <button type="submit" name="_submit" class="btn btn-lg btn-primary btn-block">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
-    </form>
+    </div>
 {% endblock fos_user_content %}
+
+{% block keyboard_control %}{% endblock %}

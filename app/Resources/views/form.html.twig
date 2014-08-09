@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block content %}
+    <section class="page-form row">
+        <div class="col-md-12">
+
+            <form action="" class="form-horizontal" method="post">
+                {% block header %}{% endblock %}
+
+                <div class="form-content">
+                    <ul class="nav nav-tabs" role="tablist">
+                        {% block form_tabs %}{% endblock %}
+                    </ul>
+
+                    <div class="tab-content">
+                        {% block form_content %}{% endblock %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
