@@ -1,39 +1,28 @@
+{% macro menu_links(links, depth) %}
+    {% import _self as macros %}
+    {% for item in links %}
+        <li{% if loop.first %} class="active"{% endif %}>
+            <a href="{{ item.link }}">
+                <i class="{% if item.properties.icon_class is defined %}{{ item.properties.icon_class }}{% endif %}"></i>
+                {% if depth == 0 %}
+                    <span class="title">{{ item.title }}</span>
+                {% else %}
+                    {{ item.title }}
+                {% endif %}
+            </a>
+            {% if item.children %}
+                <ul>
+                    {{ macros.menu_links(item.children, depth+1) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% import _self as macros %}
+
 <aside class="page-sidebar">
     <ul>
-        <li class="active">
-            <a href="{{ path('doh_main_dashboard') }}">
-                <i class="fa fa-dashboard"></i>
-                <span class="title">Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('doh_infra_server_list') }}">
-                <i class="fa fa-sitemap"></i>
-                <span class="title">Infrastructure</span>
-            </a>
-            <ul>
-                <li>
-                    <a href="{{ path('doh_infra_server_list') }}">
-                        <i class="fa fa-hdd-o"></i> Servers
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('doh_infra_farm_list') }}">
-                        <i class="fa fa-cloud"></i> Farm
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('doh_infra_role_list') }}">
-                        <i class="fa fa-paperclip"></i> Role
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="{{ path('doh_guide_guide_list') }}">
-                <i class="fa fa-file-o"></i>
-                <span class="title">Guides</span>
-            </a>
-        </li>
+        {{ macros.menu_links(menu.children, 0) }}
     </ul>
 </aside>

@@ -1,6 +1,10 @@
+imports:
+  - {resource: services.menu.yml}
+
 parameters:
   doh_main.keyboard_control.handler.class:   DOH\MainBundle\KeyboardControl\KeyboardControlHandler
   doh_main.keyboard_control_extension.class: DOH\MainBundle\DependencyInjection\KeyboardControlExtension
+  doh_main.menu_provider.class:              DOH\MainBundle\DependencyInjection\MenuProvider
 
 services:
   doh_main.keyboard_control.handler:
@@ -11,3 +15,8 @@ services:
     arguments: [@router]
     tags:
       - { name: doh_main.keyboard_control.extension }
+
+  doh_main.menu_provider:
+    class: %doh_main.menu_provider.class%
+    tags:
+      - { name: doh_main.menu.provider }

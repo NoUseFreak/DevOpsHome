@@ -8,6 +8,7 @@ parameters:
   doh_infra.keyboard_control_extension.class:      DOH\InfraBundle\DependencyInjection\KeyboardControlExtension
   doh_infra.form.type.farm.class:                  DOH\InfraBundle\Form\FarmType
   doh_infra.form.type.role.class:                  DOH\InfraBundle\Form\RoleType
+  doh_infra.menu_provider.class:                   DOH\InfraBundle\DependencyInjection\MenuProvider
 
 services:
 
@@ -56,3 +57,8 @@ services:
     class: %doh_infra.form.type.role.class%
     tags:
       - { name: form.type, alias: doh_infra_role }
+
+  doh_infra.menu_provider:
+    class: %doh_infra.menu_provider.class%
+    tags:
+      - { name: doh_main.menu.provider }

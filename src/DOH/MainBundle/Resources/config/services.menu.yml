@@ -1,0 +1,6 @@
+parameters:
+  doh_main.menu.handler.class:   DOH\MainBundle\Menu\MenuHandler
+
+services:
+  doh_main.menu.handler:
+    class: %doh_main.menu.handler.class%
