@@ -39,7 +39,7 @@ class ServerNic
     /**
      * @var string
      *
-     * @ORM\Column(name="ip", type="string", length=255)
+     * @ORM\Column(name="ip", type="string", length=255, nullable=true)
      */
     private $ip;
 
