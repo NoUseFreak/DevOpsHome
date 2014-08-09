@@ -75,5 +75,8 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: DOH\MainBundle\Entity\User
+    profile:
+      form:
+        type: doh_user_profile
 
 ornicar_gravatar: ~

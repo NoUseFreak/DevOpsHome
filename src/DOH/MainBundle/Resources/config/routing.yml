@@ -1,3 +1,7 @@
+doh_main_user:
+    resource: "routing.user.yml"
+    prefix:   /
+
 doh_main_dashboard:
     path:     /
     defaults: { _controller: DOHMainBundle:Default:index }

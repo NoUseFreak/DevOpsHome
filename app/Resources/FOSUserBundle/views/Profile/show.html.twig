@@ -1,0 +1,63 @@
+{% extends "::base.html.twig" %}
+
+{% block content_header %}
+    {% include ":Component:header.html.twig" with {
+    'title': user.username,
+    'title_caption': user.fullName,
+    'breadcrumb': [
+        {'title': 'Users', 'link': '#'}
+    ]
+    } %}
+{% endblock %}
+
+{% block content %}
+    <section class="page-user-profile row">
+        <div class="col-md-3">
+            <ul class="nav nav-tabs nav-stacked" role="tablist">
+                <li><img class="img-responsive" src="{{ gravatar(app.user.email, 300) }}" alt=""/></li>
+                <li class="active"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+                <li><a href="#groups" role="tab" data-toggle="tab">Groups</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="tab-content">
+                <div class="tab-pane active" id="profile">
+                    <div class="box-actions">
+                        {% if app.user == user %}
+                            <a class="btn btn-success btn-sm" href="{{ path('fos_user_profile_edit') }}">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+                        {% endif %}
+                    </div>
+                    <h2>{{ user.fullName|default(user.username) }}</h2>
+
+                    <div class="bio">
+                        {{ user.bio|markdown }}
+                    </div>
+
+                    {% if user.homepage %}
+                        <p>
+                            <i class="fa fa-home"></i> <a href="{{ user.homepage }}">{{ user.homepage|replace({'http://': '', 'https://': ''}) }}</a>
+                        </p>
+                    {% endif %}
+                    <ul class="list-unstyled quicklinks">
+                        <li><i class="fa fa-envelope-o"></i> <a href="mailto:{{ user.email }}">{{ user.email }}</a></li>
+                        {% if user.location %}
+                            <li><i class="fa fa-map-marker"></i> <a href="mailto:{{ user.location }}">{{ user.location }}</a></li>
+                        {% endif %}
+                        {% if user.twitter %}
+                            <li><i class="fa fa-twitter"></i> <a href="https://twitter.com/{{ user.twitter }}">{{ user.twitter }}</a></li>
+                        {% endif %}
+                        {% if user.skype %}
+                            <li><i class="fa fa-skype"></i> <a href="skype://{{ user.skype }}?call">{{ user.skype }}</a></li>
+                        {% endif %}
+                        {% if user.github %}
+                            <li><i class="fa fa-github"></i> <a href="https://github.com/{{ user.github }}">{{ user.github }}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="tab-pane" id="groups">groups</div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

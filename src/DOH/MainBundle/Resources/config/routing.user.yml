@@ -1,0 +1,3 @@
+doh_main_user_profile:
+    path:     /user/{username}
+    defaults: { _controller: DOHMainBundle:User:profile }
