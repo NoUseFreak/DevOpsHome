@@ -1,7 +1,7 @@
 {% macro menu_links(links, depth) %}
     {% import _self as macros %}
     {% for item in links %}
-        <li{% if loop.first %} class="active"{% endif %}>
+        <li{% if menu_is_active(item.link, true) %} class="active"{% endif %}>
             <a href="{{ item.link }}" class="dropdown">
                 <i class="{% if item.properties.icon_class is defined %}{{ item.properties.icon_class }}{% endif %}"></i>
                 {% if depth == 0 %}

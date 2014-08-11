@@ -1,0 +1,9 @@
+parameters:
+  doh_main.twig_extension.menu.class: DOH\MainBundle\Twig\MenuExtension
+
+services:
+  doh_main.twig_extension.menu:
+    class: %doh_main.twig_extension.menu.class%
+    arguments: [@router]
+    tags:
+        - { name: twig.extension }

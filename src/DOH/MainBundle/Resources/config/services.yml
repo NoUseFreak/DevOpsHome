@@ -1,6 +1,7 @@
 imports:
   - {resource: services.menu.yml}
   - {resource: services.user.yml}
+  - {resource: services.twig.yml}
 
 parameters:
   doh_main.keyboard_control.handler.class:   DOH\MainBundle\KeyboardControl\KeyboardControlHandler
