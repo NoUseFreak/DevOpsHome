@@ -23,6 +23,12 @@
             </td>
             <td>{{ farm.name }}</td>
         </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">
+                No farms created yet. <a href="{{ path('doh_infra_farm_new') }}">Create one now!</a>
+            </td>
+        </tr>
     {% endfor %}
 {% endblock %}
 

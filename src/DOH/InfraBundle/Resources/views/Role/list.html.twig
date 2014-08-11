@@ -23,5 +23,11 @@
             </td>
             <td>{{ role.name }}</td>
         </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">
+                No roles created yet. <a href="{{ path('doh_infra_role_new') }}">Create one now!</a>
+            </td>
+        </tr>
     {% endfor %}
 {% endblock %}
