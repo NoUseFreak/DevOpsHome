@@ -12,7 +12,6 @@
 namespace DOH\MainBundle\Twig;
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 
 
 /**
