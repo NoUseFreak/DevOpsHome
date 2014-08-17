@@ -32,28 +32,28 @@ class ServerSpecSheet
     /**
      * @var string
      *
-     * @ORM\Column(name="operating_system", type="string", length=255)
+     * @ORM\Column(name="operating_system", type="string", length=255, nullable=true)
      */
     private $operatingSystem;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ram", type="integer")
+     * @ORM\Column(name="ram", type="integer", nullable=true)
      */
     private $ram;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="vcpu", type="integer")
+     * @ORM\Column(name="vcpu", type="integer", nullable=true)
      */
     private $vcpu;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="disk_space", type="integer")
+     * @ORM\Column(name="disk_space", type="integer", nullable=true)
      */
     private $diskSpace;
 
@@ -67,7 +67,7 @@ class ServerSpecSheet
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 

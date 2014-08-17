@@ -24,7 +24,7 @@
             <a href="{{ path('doh_infra_server_edit', {id: server.id}) }}" class="btn btn-success btn-sm">
                 <i class="fa fa-edit"></i> Edit
             </a>
-            <a href="{{ path('doh_infra_server_edit', {id: server.id}) }}" class="btn btn-danger btn-sm">
+            <a href="{{ path('doh_infra_server_delete', {id: server.id}) }}" class="btn btn-danger btn-sm">
                 <i class="fa fa-trash-o"></i> Delete
             </a>
         {% endblock %}
@@ -52,6 +52,8 @@
                                 {% for farm in server.farms %}
                                     <a href="{{ path('doh_infra_farm_detail', {id: farm.id}) }}">{{ farm.name }}</a>
                                     {% if not loop.last %}, {% endif %}
+                                {% else %}
+                                    N/A
                                 {% endfor %}
                             </div>
                         </div>
@@ -63,6 +65,8 @@
                                 {% for role in server.roles %}
                                     <a href="{{ path('doh_infra_role_detail', {id: role.id}) }}">{{ role.name }}</a>
                                     {% if not loop.last %}, {% endif %}
+                                {% else %}
+                                    N/A
                                 {% endfor %}
                             </div>
                         </div>
@@ -71,7 +75,7 @@
                                 Operating system
                             </div>
                             <div class="col-sm-8">
-                                {{ server.specSheet.operatingSystem }}
+                                {{ server.specSheet.operatingSystem|default('N/A') }}
                             </div>
                         </div>
                         <div class="row">
@@ -79,7 +83,7 @@
                                 Type
                             </div>
                             <div class="col-sm-8">
-                                {{ server.specSheet.type }}
+                                {{ server.specSheet.type|default('N/A') }}
                             </div>
                         </div>
                         <div class="row">
@@ -87,7 +91,7 @@
                                 vCPU
                             </div>
                             <div class="col-sm-8">
-                                {{ server.specSheet.vcpu }}
+                                {{ server.specSheet.vcpu|default('N/A') }}
                             </div>
                         </div>
                         <div class="row">
@@ -95,7 +99,7 @@
                                 RAM
                             </div>
                             <div class="col-sm-8">
-                                {{ server.specSheet.ram }}
+                                {{ server.specSheet.ram|default('N/A') }}
                             </div>
                         </div>
                     </div>
@@ -168,7 +172,20 @@
 
     </div>
     <div class="tab-pane" id="notes">
-
+        <div class="row">
+            <div class="col-md-12">
+                <section class="portlet grey">
+                    <header class="header">Notes</header>
+                    <div class="body">
+                        {% if server.notes %}
+                            {{ server.notes|markdown }}
+                        {% else %}
+                            <p>No notes</p>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
     <div class="tab-pane" id="changelog">
         {{ render(controller('DOHInfraBundle:Changelog:list', {id: server.id})) }}

@@ -51,6 +51,19 @@ class FarmController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse|Response
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $entity = $this->getFarmRepo()->find($id);
+
+        return $this->get('doh_main.form.factory.delete')
+            ->deleteForm($request, $entity, 'farm', $this->generateUrl('doh_infra_farm_list'));
+    }
+
+    /**
      * @param int $id
      * @throws NotFoundHttpException
      * @return Response

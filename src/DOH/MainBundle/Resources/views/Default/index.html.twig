@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-6">
             <section class="portlet grey">
-                <header class="header">New server</header>
+                <header class="header">New servers</header>
                 <div class="body">
                     <ul class="feed list-unstyled">
                         {% for server in servers %}
@@ -23,6 +23,12 @@
                                 </div>
                                 <time class="col-sm-3">now</time>
                             </li>
+                        {% else %}
+                        <li class="row">
+                            <div class="col-sm-12">
+                                No servers created yet. <a href="{{ path('doh_infra_server_new') }}">Create one now!</a>
+                            </div>
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -40,6 +46,12 @@
                                     <a href="{{ path('doh_guide_guide_detail', {'id': guide.id}) }}">{{ guide.name }}</a>
                                 </div>
                                 <time class="col-sm-3">now</time>
+                            </li>
+                        {% else %}
+                            <li class="row">
+                                <div class="col-sm-12">
+                                    No guides created yet. <a href="{{ path('doh_guide_guide_new') }}">Create one now!</a>
+                                </div>
                             </li>
                         {% endfor %}
                     </ul>

@@ -1,0 +1,131 @@
+{% extends '::form.html.twig' %}
+
+{% block title %}{{ parent() }} - Server - New{% endblock %}
+
+{% block header %}
+    {% embed ":Component:box_header.html.twig" %}
+        {% block title %}New server{% endblock %}
+        {% block title_icon %}<i class="fa fa-hdd-o"></i>{% endblock %}
+        {% block actions %}
+            <button class="btn default btn-sm" type="reset">
+                <i class="fa fa-reply"></i> Reset
+            </button>
+            <button class="btn btn-success btn-sm" type="submit">
+                <i class="fa fa-check"></i> Save
+            </button>
+            <button class="btn btn-success btn-sm" type="submit">
+                <i class="fa fa-check-circle"></i> Save &amp; Continue Edit
+            </button>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block form_tabs %}
+    <li class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
+    <li><a href="#specs" role="tab" data-toggle="tab">Specs</a></li>
+    <li><a href="#nics" role="tab" data-toggle="tab">Network</a></li>
+    <li><a href="#disk" role="tab" data-toggle="tab">Disk</a></li>
+    <li><a href="#notes" role="tab" data-toggle="tab">Notes</a></li>
+{% endblock %}
+
+{% block form_content %}
+    <div class="tab-pane active" id="general">
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.name) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.farms) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.farms) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.roles) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.roles) }}
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="specs">
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.specSheet.operatingSystem) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.specSheet.operatingSystem) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.specSheet.ram) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.specSheet.ram) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.specSheet.vcpu) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.specSheet.vcpu) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.specSheet.diskSpace) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.specSheet.diskSpace) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.specSheet.type) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.specSheet.type) }}
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="nics">
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.nics) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.nics) }}
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="disk">
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.specSheet.partitionInfo) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.specSheet.partitionInfo) }}
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="notes">
+        <div class="form-group">
+            <div class="col-sm-2">
+                {{ form_label(form.notes) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(form.notes) }}
+            </div>
+        </div>
+    </div>
+    {{ form_rest(form) }}
+{% endblock %}

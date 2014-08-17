@@ -22,3 +22,9 @@ doh_guide_guide_edit:
     defaults: { _controller: DOHGuideBundle:Guide:edit }
     requirements:
         id:  \d+
+
+doh_guide_guide_delete:
+    path:     /guide/guide/{id}/delete
+    defaults: { _controller: DOHGuideBundle:Guide:delete }
+    requirements:
+        id:  \d+

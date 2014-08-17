@@ -32,7 +32,7 @@ class Server
     /**
      * @var ServerSpecSheet
      *
-     * @ORM\OneToOne(targetEntity="ServerSpecSheet", inversedBy="server", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="ServerSpecSheet", inversedBy="server", cascade={"all"})
      * @ORM\JoinColumn(name="spec_sheet_id", referencedColumnName="id")
      */
     private $specSheet;
@@ -40,14 +40,14 @@ class Server
     /**
      * @var ServerNic
      *
-     * @ORM\OneToMany(targetEntity="ServerNic", mappedBy="server", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ServerNic", mappedBy="server", cascade={"all"})
      */
     private $nics;
 
     /**
      * @var ServerChangelog[]
      *
-     * @ORM\OneToMany(targetEntity="ServerChangelog", mappedBy="server", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ServerChangelog", mappedBy="server", cascade={"all"})
      */
     private $changelogs;
 
@@ -66,6 +66,14 @@ class Server
      * @ORM\JoinTable(name="Server_Role")
      **/
     private $roles;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notes", type="text", nullable=true)
+     */
+    private $notes;
 
     public function __construct()
     {
@@ -185,5 +193,21 @@ class Server
     public function getRoles()
     {
         return $this->roles;
+    }
+
+    /**
+     * @param string $notes
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 }

@@ -5,21 +5,27 @@
 
 doh_infra_server_list:
     path:     /infra
-    defaults: { _controller: DOHInfraBundle:Default:list }
+    defaults: { _controller: DOHInfraBundle:Server:list }
 
 doh_infra_server_new:
     path:     /infra/new
-    defaults: { _controller: DOHInfraBundle:Default:new }
+    defaults: { _controller: DOHInfraBundle:Server:new }
 
 doh_infra_server_detail:
     path:     /infra/{id}
-    defaults: { _controller: DOHInfraBundle:Default:detail }
+    defaults: { _controller: DOHInfraBundle:Server:detail }
     requirements:
         id:  \d+
 
 doh_infra_server_edit:
     path:     /infra/{id}/edit
-    defaults: { _controller: DOHInfraBundle:Default:edit }
+    defaults: { _controller: DOHInfraBundle:Server:edit }
+    requirements:
+        id:  \d+
+
+doh_infra_server_delete:
+    path:     /infra/{id}/delete
+    defaults: { _controller: DOHInfraBundle:Server:delete }
     requirements:
         id:  \d+
 
@@ -63,6 +69,11 @@ doh_infra_farm_edit:
     requirements:
         id:  \d+
 
+doh_infra_farm_delete:
+    path:     /infra/farm/{id}/delete
+    defaults: { _controller: DOHInfraBundle:Farm:delete }
+    requirements:
+        id:  \d+
 ##
 # Roles
 ##
@@ -84,5 +95,11 @@ doh_infra_role_detail:
 doh_infra_role_edit:
     path:     /infra/role/{id}/edit
     defaults: { _controller: DOHInfraBundle:Role:edit }
+    requirements:
+        id:  \d+
+
+doh_infra_role_delete:
+    path:     /infra/role/{id}/delete
+    defaults: { _controller: DOHInfraBundle:Role:delete }
     requirements:
         id:  \d+

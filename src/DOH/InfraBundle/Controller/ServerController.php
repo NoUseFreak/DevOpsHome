@@ -11,16 +11,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class DefaultController extends Controller
+class ServerController extends Controller
 {
     /**
      * @return Response
      */
     public function listAction()
     {
-        return $this->render('DOHInfraBundle:Default:list.html.twig', array(
-            'servers' => $this->getServerRepo()->findAll(),
-        ));
+        return $this->render(
+            'DOHInfraBundle:Server:list.html.twig',
+            array(
+                'servers' => $this->getServerRepo()->findAll(),
+            )
+        );
     }
 
     /**
@@ -50,6 +53,19 @@ class DefaultController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse|Response
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $entity = $this->getServerRepo()->find($id);
+
+        return $this->get('doh_main.form.factory.delete')
+            ->deleteForm($request, $entity, 'server', $this->generateUrl('doh_infra_server_list'));
+    }
+
+    /**
      * @param int $id
      * @throws NotFoundHttpException
      * @return Response
@@ -62,9 +78,12 @@ class DefaultController extends Controller
             throw new NotFoundHttpException();
         }
 
-        return $this->render('DOHInfraBundle:Default:detail.html.twig', array(
-            'server' => $server,
-        ));
+        return $this->render(
+            'DOHInfraBundle:Server:detail.html.twig',
+            array(
+                'server' => $server,
+            )
+        );
     }
 
     /**
@@ -103,20 +122,21 @@ class DefaultController extends Controller
             $em->persist($server);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('doh_infra_server_detail', array(
-                'id' => $server->getId(),
-            )));
+            return $this->redirect(
+                $this->generateUrl(
+                    'doh_infra_server_detail',
+                    array(
+                        'id' => $server->getId(),
+                    )
+                )
+            );
         }
 
-        return $this->render('DOHInfraBundle:Default:form.html.twig', array(
-            'form' => $form->createView(),
-        ));
-    }
-
-    public function statsAction()
-    {
-        return $this->render('DOHInfraBundle:Default:stats.html.twig', array(
-            'serverCount' => $this->getServerRepo()->getCount(),
-        ));
+        return $this->render(
+            'DOHInfraBundle:Server:form.html.twig',
+            array(
+                'form' => $form->createView(),
+            )
+        );
     }
 }

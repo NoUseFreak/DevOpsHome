@@ -1,0 +1,6 @@
+services:
+    doh_main.form.type.profile:
+        class: DOH\MainBundle\Form\UserProfileType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: doh_user_profile }

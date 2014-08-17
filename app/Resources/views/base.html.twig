@@ -8,7 +8,12 @@
         <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}"/>
     {% endblock %}
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16 32x32 64x64" href="{{ asset('favicon/favicon-64.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96 160x160 196x196" href="{{ asset('favicon/favicon-196.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114 120x120 144x144 152x152" href="{{ asset('favicon/favicon-152.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72 76x76" href="{{ asset('favicon/favicon-76.png') }}">
 
 </head>
 <body>
@@ -36,16 +41,12 @@
                     <li class="dropdown dropdown-user">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ gravatar(app.user.email, 80) }}" class="avatar img-circle" data-toggle="tooltip" />{{ app.user.username }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                            <li><a href="#">Settings</a></li>
                             <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i></a></li>
                 </ul>
 
             </div>
@@ -53,7 +54,6 @@
     </header>
 
     <div class="page-container">
-        {#{% include "_sidebar.html.twig" %}#}
         <div class="page-content">
             {% block content_full %}
                 {% block content_header %}{% endblock %}

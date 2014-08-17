@@ -23,5 +23,11 @@
             </td>
             <td>{{ server.name }}</td>
         </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">
+                No servers created yet. <a href="{{ path('doh_infra_server_new') }}">Create one now!</a>
+            </td>
+        </tr>
     {% endfor %}
 {% endblock %}
