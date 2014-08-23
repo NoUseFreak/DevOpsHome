@@ -1,0 +1,11 @@
+# Site settings
+title: DevOps Home
+email: dries@nousefreak.be
+description: DevOps Documentation platform
+baseurl: ""
+url: "http://devopshome.nousefreak.be"
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+markdown: redcarpet

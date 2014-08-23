@@ -95,6 +95,24 @@ img {
   max-width:100%;
 }
 
+.gallery {
+  width: 100%;
+  float: left;
+  padding: 0;
+  list-style: none;
+}
+.gallery li {
+  width: 50%;
+  float: left;
+}
+.gallery li:nth-child(2n+1) {
+  clear: left;
+}
+.gallery li a {
+  display: block;
+  padding: 10px;
+}
+
 header {
   width:270px;
   float:left;
